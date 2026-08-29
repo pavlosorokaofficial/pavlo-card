@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
             --gold: #d4af5a;
             --text: #f5f5f5;
             --muted: #858585;
-            --border: rgba(255,255,255,.09);
+            --border: rgba(255, 255, 255, .09);
         }
 
         html {
@@ -32,11 +33,9 @@
         body {
             font-family: 'Manrope', sans-serif;
             background:
-                radial-gradient(
-                    circle at 50% -10%,
-                    rgba(212,175,90,.14),
-                    transparent 35%
-                ),
+                radial-gradient(circle at 50% -10%,
+                    rgba(212, 175, 90, .14),
+                    transparent 35%),
                 var(--bg);
             color: var(--text);
             min-height: 100vh;
@@ -68,10 +67,10 @@
             justify-content: center;
             align-items: center;
 
-            border: 1px solid rgba(212,175,90,.65);
+            border: 1px solid rgba(212, 175, 90, .65);
             border-radius: 13px;
 
-            background: rgba(212,175,90,.04);
+            background: rgba(212, 175, 90, .04);
 
             color: var(--gold);
 
@@ -91,7 +90,7 @@
             border: 1px solid var(--border);
             border-radius: 11px;
 
-            background: rgba(255,255,255,.03);
+            background: rgba(255, 255, 255, .03);
         }
 
         .language-switch button {
@@ -142,16 +141,14 @@
             border-radius: 20px;
 
             background:
-                linear-gradient(
-                    145deg,
+                linear-gradient(145deg,
                     #252525,
-                    #101010
-                );
+                    #101010);
 
-            border: 1px solid rgba(212,175,90,.3);
+            border: 1px solid rgba(212, 175, 90, .3);
 
             box-shadow:
-                0 15px 35px rgba(0,0,0,.3);
+                0 15px 35px rgba(0, 0, 0, .3);
         }
 
         .profile-image img {
@@ -223,7 +220,7 @@
 
             color: var(--text);
 
-            background: rgba(255,255,255,.035);
+            background: rgba(255, 255, 255, .035);
 
             border: 1px solid var(--border);
             border-radius: 17px;
@@ -241,7 +238,7 @@
         .action-button:hover {
             transform: translateY(-3px);
 
-            border-color: rgba(212,175,90,.55);
+            border-color: rgba(212, 175, 90, .55);
 
             background: var(--card-hover);
         }
@@ -256,6 +253,14 @@
             font-size: 23px;
 
             line-height: 1;
+        }
+
+        .action-icon {
+            height: 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .action-title {
@@ -300,7 +305,7 @@
 
             color: var(--text);
 
-            background: rgba(255,255,255,.035);
+            background: rgba(255, 255, 255, .035);
 
             border: 1px solid var(--border);
             border-radius: 17px;
@@ -309,7 +314,7 @@
         }
 
         .email-card:hover {
-            border-color: rgba(212,175,90,.55);
+            border-color: rgba(212, 175, 90, .55);
 
             background: var(--card-hover);
         }
@@ -326,7 +331,7 @@
 
             border-radius: 13px;
 
-            background: rgba(212,175,90,.08);
+            background: rgba(212, 175, 90, .08);
 
             color: var(--gold);
 
@@ -372,16 +377,14 @@
 
             gap: 10px;
 
-            border: 1px solid rgba(212,175,90,.25);
+            border: 1px solid rgba(212, 175, 90, .25);
 
             border-radius: 17px;
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(212,175,90,.08),
-                    rgba(255,255,255,.025)
-                );
+                linear-gradient(135deg,
+                    rgba(212, 175, 90, .08),
+                    rgba(255, 255, 255, .025));
 
             color: var(--text);
 
@@ -400,14 +403,12 @@
         .share-button:hover {
             transform: translateY(-2px);
 
-            border-color: rgba(212,175,90,.6);
+            border-color: rgba(212, 175, 90, .6);
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(212,175,90,.13),
-                    rgba(255,255,255,.04)
-                );
+                linear-gradient(135deg,
+                    rgba(212, 175, 90, .13),
+                    rgba(255, 255, 255, .04));
         }
 
         .share-button:active {
@@ -432,11 +433,9 @@
             border-radius: 20px;
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(212,175,90,.08),
-                    rgba(255,255,255,.02)
-                );
+                linear-gradient(135deg,
+                    rgba(212, 175, 90, .08),
+                    rgba(255, 255, 255, .02));
 
             border: 1px solid var(--border);
         }
@@ -509,7 +508,7 @@
 
             z-index: 100;
 
-            background: rgba(0,0,0,.84);
+            background: rgba(0, 0, 0, .84);
 
             backdrop-filter: blur(8px);
 
@@ -532,7 +531,7 @@
 
             background: #111;
 
-            border: 1px solid rgba(212,175,90,.3);
+            border: 1px solid rgba(212, 175, 90, .3);
 
             border-radius: 24px;
 
@@ -611,6 +610,32 @@
             font-weight: 600;
         }
 
+        .qr-image {
+            width: 220px;
+            height: 220px;
+
+            object-fit: contain;
+
+            display: block;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 8px;
+
+            border-radius: 12px;
+        }
+
+        .icon-img {
+            width: 23px;
+            height: 23px;
+            border-radius: 10px;
+            object-fit: contain;
+
+            filter: invert(76%) sepia(37%) saturate(600%) hue-rotate(3deg) brightness(92%);
+        }
+
         /* =========================
            MOBILE
         ========================= */
@@ -635,586 +660,518 @@
             }
 
         }
-
     </style>
 </head>
 
 
 <body>
 
-<div class="container">
+    <div class="container">
 
 
-    <!-- =========================
+        <!-- =========================
          TOP
     ========================= -->
 
-    <div class="topbar">
+        <div class="topbar">
 
-        <div class="logo">
-            PS
-        </div>
-
-
-        <div class="language-switch">
-
-            <button
-                id="enBtn"
-                class="active"
-                onclick="setLanguage('en')">
-
-                EN
-
-            </button>
-
-
-            <button
-                id="uaBtn"
-                onclick="setLanguage('ua')">
-
-                UA
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         PROFILE
-    ========================= -->
-
-    <section class="profile-card">
-
-
-        <div class="profile-image">
-
-            <!--
-            КОЛИ БУДЕ ФОТО:
-
-            <img
-                src="your-photo.jpg"
-                alt="Pavlo Soroka">
-            -->
-
-            <div class="profile-placeholder">
+            <div class="logo">
                 PS
             </div>
 
-        </div>
+
+            <div class="language-switch">
+
+                <button id="enBtn" class="active" onclick="setLanguage('en')">
+
+                    EN
+
+                </button>
 
 
-        <div class="profile-info">
+                <button id="uaBtn" onclick="setLanguage('ua')">
 
-            <h1>
-                PAVLO<br>
-                SOROKA
-            </h1>
+                    UA
 
-
-            <div
-                class="role"
-                id="role">
-
-                FOUNDER<br>
-                E-COMMERCE COMPANY
+                </button>
 
             </div>
 
         </div>
 
-    </section>
+
+        <!-- =========================
+         PROFILE
+    ========================= -->
+
+        <section class="profile-card">
 
 
-    <!-- =========================
+            <div class="profile-image">
+
+                <img src="assets/profile.jpg" alt="Pavlo Soroka">
+            </div>
+
+
+            <div class="profile-info">
+
+                <h1>
+                    PAVLO<br>
+                    SOROKA
+                </h1>
+
+
+                <div class="role" id="role">
+
+                    FOUNDER<br>
+                    E-COMMERCE COMPANY
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
          CONTACTS + QR
     ========================= -->
 
-    <div class="buttons-grid">
+        <div class="buttons-grid">
 
 
-        <!-- ADD CONTACT -->
+            <!-- ADD CONTACT -->
 
-        <button
-            class="action-button"
-            onclick="downloadContact()">
+            <button class="action-button" onclick="downloadContact()">
 
-            <div class="action-icon">
-                ◉
-            </div>
+                <div class="action-icon">
+                    <img src="Assets/PhoneIcon.jpg" class="icon-img" alt="Add Contact">
+                </div>
 
 
-            <div
-                class="action-title"
-                id="contactsText">
+                <div class="action-title" id="contactsText">
 
-                ADD TO CONTACTS
+                    ADD TO CONTACTS
 
-            </div>
+                </div>
 
-        </button>
+            </button>
 
 
-        <!-- QR -->
+            <!-- QR -->
 
-        <button
-            class="action-button"
-            onclick="openQR()">
+            <button class="action-button" onclick="openQR()">
 
-            <div class="action-icon">
-                ▣
-            </div>
+                <div class="action-icon">
+                    <img src="Assets/QR-codeIcon.jpg" class="icon-img" alt="QR Code">
+                </div>
 
 
-            <div
-                class="action-title"
-                id="qrText">
+                <div class="action-title" id="qrText">
 
-                QR CODE
+                    QR CODE
 
-            </div>
+                </div>
 
-        </button>
+            </button>
 
-    </div>
+        </div>
 
 
-    <!-- =========================
+        <!-- =========================
          SOCIAL
     ========================= -->
 
-    <div class="social-grid">
+        <div class="social-grid">
 
 
-        <!-- TELEGRAM -->
+            <!-- TELEGRAM -->
 
-        <a
-            href="https://t.me/Pavlo11228"
-            target="_blank"
-            rel="noopener"
-            class="action-button">
+            <a href="https://t.me/Pavlo11228" target="_blank" rel="noopener" class="action-button">
 
-            <div class="action-icon">
-                ✈
-            </div>
+                <div class="action-icon">
+                    <img src="Assets/BlackIconTelegram.jpg" class="icon-img" alt="Telegram">
+                </div>
 
 
-            <div
-                class="action-title"
-                id="telegramText">
+                <div class="action-title" id="telegramText">
 
-                TELEGRAM
+                    TELEGRAM
 
-            </div>
+                </div>
 
-        </a>
+            </a>
 
 
-        <!-- INSTAGRAM -->
+            <!-- INSTAGRAM -->
 
-        <a
-            href="https://www.instagram.com/pavlo_4838?igsh=Ynl0M2JmN3MzZXZ6"
-            target="_blank"
-            rel="noopener"
-            class="action-button">
+            <a href="https://www.instagram.com/pavlo_4838?igsh=Ynl0M2JmN3MzZXZ6" target="_blank" rel="noopener"
+                class="action-button">
 
-            <div class="action-icon">
-                ◎
-            </div>
+                <div class="action-icon">
+                    <img src="Assets/BlackIconInstagram.jpg" class="icon-img" alt="Instagram">
+                </div>
 
 
-            <div
-                class="action-title"
-                id="instagramText">
+                <div class="action-title" id="instagramText">
 
-                INSTAGRAM
+                    INSTAGRAM
 
-            </div>
+                </div>
 
-        </a>
+            </a>
 
-    </div>
+        </div>
 
 
-    <!-- =========================
+        <!-- =========================
          EMAIL
     ========================= -->
 
-    <a
-        href="mailto:pavlosoroka57@gmail.com"
-        class="email-card">
+        <a href="mailto:pavlosoroka57@gmail.com" class="email-card">
 
-        <div class="email-icon">
-            ✉
-        </div>
-
-
-        <div class="email-info">
-
-            <div
-                class="email-label"
-                id="emailLabel">
-
-                BUSINESS EMAIL
-
+            <div class="email-icon">
+                ✉
             </div>
 
 
-            <div class="email-address">
-                pavlosoroka57@gmail.com
+            <div class="email-info">
+
+                <div class="email-label" id="emailLabel">
+
+                    BUSINESS EMAIL
+
+                </div>
+
+
+                <div class="email-address">
+                    pavlosoroka57@gmail.com
+                </div>
+
             </div>
 
-        </div>
-
-    </a>
+        </a>
 
 
-    <!-- =========================
+        <!-- =========================
          SHARE
     ========================= -->
 
-    <button
-        class="share-button"
-        onclick="shareProfile()">
+        <button class="share-button" onclick="shareProfile()">
 
-        <span class="share-icon">
-            ↗
-        </span>
+            <img src="Assets/ShareIcon.jpg" class="icon-img" alt="Share">
 
-
-        <span id="shareText">
-            SHARE PROFILE
-        </span>
-
-    </button>
-
-
-    <!-- =========================
-         ABOUT
-    ========================= -->
-
-    <section class="about">
-
-
-        <div
-            class="about-label"
-            id="aboutLabel">
-
-            ABOUT
-
-        </div>
-
-
-        <h2 id="aboutTitle">
-
-            Building digital businesses.
-
-        </h2>
-
-
-        <p id="aboutDescription">
-
-            Entrepreneur and founder focused on building and scaling
-            e-commerce businesses. Currently developing multiple
-            online stores and digital projects.
-
-        </p>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        <div class="line"></div>
-
-        © 2026 PAVLO SOROKA
-
-    </footer>
-
-
-</div>
-
-
-<!-- =========================
-     QR MODAL
-========================= -->
-
-<div
-    class="modal"
-    id="qrModal">
-
-
-    <div class="modal-content">
-
-
-        <button
-            class="close"
-            onclick="closeQR()">
-
-            ×
+            <span id="shareText">
+                SHARE PROFILE
+            </span>
 
         </button>
 
 
-        <h3 id="qrModalTitle">
-            My Digital Card
-        </h3>
+        <!-- =========================
+         ABOUT
+    ========================= -->
+
+        <section class="about">
 
 
-        <p id="qrModalDescription">
-            Scan to open my profile
-        </p>
+            <div class="about-label" id="aboutLabel">
+
+                ABOUT
+
+            </div>
 
 
-        <!--
-        ПОТІМ ТУТ БУДЕ ТВОЄ QR:
+            <h2 id="aboutTitle">
 
-        <img
-            src="qr-code.png"
-            class="qr-image"
-            alt="QR Code">
-        -->
+                Building digital businesses.
+
+            </h2>
 
 
-        <div class="qr-placeholder">
+            <p id="aboutDescription">
 
-            QR CODE<br>
-            WILL BE HERE
+                Entrepreneur and founder focused on building and scaling
+                e-commerce businesses. Currently developing multiple
+                online stores and digital projects.
+
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+         FOOTER
+    ========================= -->
+
+        <footer>
+
+            <div class="line"></div>
+
+            © 2026 PAVLO SOROKA
+
+        </footer>
+
+
+    </div>
+
+
+    <!-- =========================
+     QR MODAL
+========================= -->
+
+    <div class="modal" id="qrModal">
+
+
+        <div class="modal-content">
+
+
+            <button class="close" onclick="closeQR()">
+
+                ×
+
+            </button>
+
+
+            <h3 id="qrModalTitle">
+                My Digital Card
+            </h3>
+
+
+            <p id="qrModalDescription">
+                Scan to open my profile
+            </p>
+
+
+            <img src="Assets/QR-code.jpg" class="qr-image" alt="QR Code">
 
         </div>
 
     </div>
 
-</div>
 
+    <script>
 
-<script>
 
+        /* =========================
+           TRANSLATIONS
+        ========================= */
 
-    /* =========================
-       TRANSLATIONS
-    ========================= */
+        const translations = {
 
-    const translations = {
 
+            en: {
 
-        en: {
+                role:
+                    "FOUNDER<br>E-COMMERCE COMPANY",
 
-            role:
-                "FOUNDER<br>E-COMMERCE COMPANY",
+                contacts:
+                    "ADD TO CONTACTS",
 
-            contacts:
-                "ADD TO CONTACTS",
+                qr:
+                    "QR CODE",
 
-            qr:
-                "QR CODE",
+                telegram:
+                    "TELEGRAM",
 
-            telegram:
-                "TELEGRAM",
+                instagram:
+                    "INSTAGRAM",
 
-            instagram:
-                "INSTAGRAM",
+                email:
+                    "BUSINESS EMAIL",
 
-            email:
-                "BUSINESS EMAIL",
+                share:
+                    "SHARE PROFILE",
 
-            share:
-                "SHARE PROFILE",
+                about:
+                    "ABOUT",
 
-            about:
-                "ABOUT",
+                aboutTitle:
+                    "Building digital businesses.",
 
-            aboutTitle:
-                "Building digital businesses.",
+                aboutDescription:
+                    "Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently developing multiple online stores and digital projects.",
 
-            aboutDescription:
-                "Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently developing multiple online stores and digital projects.",
+                qrModalTitle:
+                    "My Digital Card",
 
-            qrModalTitle:
-                "My Digital Card",
+                qrModalDescription:
+                    "Scan to open my profile"
 
-            qrModalDescription:
-                "Scan to open my profile"
+            },
 
-        },
 
+            ua: {
 
-        ua: {
+                role:
+                    "ЗАСНОВНИК<br>E-COMMERCE КОМПАНІЇ",
 
-            role:
-                "ЗАСНОВНИК<br>E-COMMERCE КОМПАНІЇ",
+                contacts:
+                    "ДОДАТИ В КОНТАКТИ",
 
-            contacts:
-                "ДОДАТИ В КОНТАКТИ",
+                qr:
+                    "QR КОД",
 
-            qr:
-                "QR КОД",
+                telegram:
+                    "ТЕЛЕГРАМ",
 
-            telegram:
-                "ТЕЛЕГРАМ",
+                instagram:
+                    "ІНСТАГРАМ",
 
-            instagram:
-                "ІНСТАГРАМ",
+                email:
+                    "РОБОЧА ПОШТА",
 
-            email:
-                "РОБОЧА ПОШТА",
+                share:
+                    "ПОДІЛИТИСЯ ПРОФІЛЕМ",
 
-            share:
-                "ПОДІЛИТИСЯ ПРОФІЛЕМ",
+                about:
+                    "ПРО МЕНЕ",
 
-            about:
-                "ПРО МЕНЕ",
+                aboutTitle:
+                    "Створюю цифрові бізнеси.",
 
-            aboutTitle:
-                "Створюю цифрові бізнеси.",
+                aboutDescription:
+                    "Підприємець та засновник, який розвивається у сфері e-commerce та створенні цифрових бізнесів. Зараз працюю над розвитком онлайн-магазинів і власних цифрових проєктів.",
 
-            aboutDescription:
-                "Підприємець та засновник, який розвивається у сфері e-commerce та створенні цифрових бізнесів. Зараз працюю над розвитком онлайн-магазинів і власних цифрових проєктів.",
+                qrModalTitle:
+                    "Моя цифрова візитка",
 
-            qrModalTitle:
-                "Моя цифрова візитка",
-
-            qrModalDescription:
-                "Відскануйте QR-код, щоб відкрити профіль"
-
-        }
-
-    };
-
-
-    /* =========================
-       LANGUAGE
-    ========================= */
-
-    function setLanguage(language) {
-
-
-        document.documentElement.lang =
-            language;
-
-
-        document.getElementById("role").innerHTML =
-            translations[language].role;
-
-
-        document.getElementById("contactsText").innerText =
-            translations[language].contacts;
-
-
-        document.getElementById("qrText").innerText =
-            translations[language].qr;
-
-
-        document.getElementById("telegramText").innerText =
-            translations[language].telegram;
-
-
-        document.getElementById("instagramText").innerText =
-            translations[language].instagram;
-
-
-        document.getElementById("emailLabel").innerText =
-            translations[language].email;
-
-
-        document.getElementById("shareText").innerText =
-            translations[language].share;
-
-
-        document.getElementById("aboutLabel").innerText =
-            translations[language].about;
-
-
-        document.getElementById("aboutTitle").innerText =
-            translations[language].aboutTitle;
-
-
-        document.getElementById("aboutDescription").innerText =
-            translations[language].aboutDescription;
-
-
-        document.getElementById("qrModalTitle").innerText =
-            translations[language].qrModalTitle;
-
-
-        document.getElementById("qrModalDescription").innerText =
-            translations[language].qrModalDescription;
-
-
-        document.getElementById("enBtn")
-            .classList.remove("active");
-
-
-        document.getElementById("uaBtn")
-            .classList.remove("active");
-
-
-        if (language === "en") {
-
-            document.getElementById("enBtn")
-                .classList.add("active");
-
-        } else {
-
-            document.getElementById("uaBtn")
-                .classList.add("active");
-
-        }
-
-    }
-
-
-    /* =========================
-       QR
-    ========================= */
-
-    function openQR() {
-
-        document.getElementById("qrModal")
-            .style.display = "flex";
-
-    }
-
-
-    function closeQR() {
-
-        document.getElementById("qrModal")
-            .style.display = "none";
-
-    }
-
-
-    /* CLOSE QR OUTSIDE */
-
-    document
-        .getElementById("qrModal")
-        .addEventListener(
-            "click",
-            function(event) {
-
-                if (event.target === this) {
-
-                    closeQR();
-
-                }
+                qrModalDescription:
+                    "Відскануйте QR-код, щоб відкрити профіль"
 
             }
-        );
+
+        };
 
 
-    /* =========================
-       CONTACT
-    ========================= */
+        /* =========================
+           LANGUAGE
+        ========================= */
 
-    function downloadContact() {
+        function setLanguage(language) {
 
 
-        const vCard = `BEGIN:VCARD
+            document.documentElement.lang =
+                language;
+
+
+            document.getElementById("role").innerHTML =
+                translations[language].role;
+
+
+            document.getElementById("contactsText").innerText =
+                translations[language].contacts;
+
+
+            document.getElementById("qrText").innerText =
+                translations[language].qr;
+
+
+            document.getElementById("telegramText").innerText =
+                translations[language].telegram;
+
+
+            document.getElementById("instagramText").innerText =
+                translations[language].instagram;
+
+
+            document.getElementById("emailLabel").innerText =
+                translations[language].email;
+
+
+            document.getElementById("shareText").innerText =
+                translations[language].share;
+
+
+            document.getElementById("aboutLabel").innerText =
+                translations[language].about;
+
+
+            document.getElementById("aboutTitle").innerText =
+                translations[language].aboutTitle;
+
+
+            document.getElementById("aboutDescription").innerText =
+                translations[language].aboutDescription;
+
+
+            document.getElementById("qrModalTitle").innerText =
+                translations[language].qrModalTitle;
+
+
+            document.getElementById("qrModalDescription").innerText =
+                translations[language].qrModalDescription;
+
+
+            document.getElementById("enBtn")
+                .classList.remove("active");
+
+
+            document.getElementById("uaBtn")
+                .classList.remove("active");
+
+
+            if (language === "en") {
+
+                document.getElementById("enBtn")
+                    .classList.add("active");
+
+            } else {
+
+                document.getElementById("uaBtn")
+                    .classList.add("active");
+
+            }
+
+        }
+
+
+        /* =========================
+           QR
+        ========================= */
+
+        function openQR() {
+
+            document.getElementById("qrModal")
+                .style.display = "flex";
+
+        }
+
+
+        function closeQR() {
+
+            document.getElementById("qrModal")
+                .style.display = "none";
+
+        }
+
+
+        /* CLOSE QR OUTSIDE */
+
+        document
+            .getElementById("qrModal")
+            .addEventListener(
+                "click",
+                function (event) {
+
+                    if (event.target === this) {
+
+                        closeQR();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        function downloadContact() {
+
+
+            const vCard = `BEGIN:VCARD
 VERSION:3.0
 FN:Pavlo Soroka
 N:Soroka;Pavlo;;;
@@ -1226,111 +1183,112 @@ URL:${window.location.href}
 END:VCARD`;
 
 
-        const blob = new Blob(
-            [vCard],
-            {
-                type: "text/vcard"
-            }
-        );
+            const blob = new Blob(
+                [vCard],
+                {
+                    type: "text/vcard"
+                }
+            );
 
 
-        const url =
-            URL.createObjectURL(blob);
+            const url =
+                URL.createObjectURL(blob);
 
 
-        const link =
-            document.createElement("a");
+            const link =
+                document.createElement("a");
 
 
-        link.href = url;
+            link.href = url;
 
 
-        link.download =
-            "Pavlo-Soroka.vcf";
+            link.download =
+                "Pavlo-Soroka.vcf";
 
 
-        document.body.appendChild(link);
+            document.body.appendChild(link);
 
 
-        link.click();
+            link.click();
 
 
-        document.body.removeChild(link);
+            document.body.removeChild(link);
 
 
-        URL.revokeObjectURL(url);
+            URL.revokeObjectURL(url);
 
-    }
-
-
-    /* =========================
-       SHARE PROFILE
-    ========================= */
-
-    async function shareProfile() {
+        }
 
 
-        const shareData = {
+        /* =========================
+           SHARE PROFILE
+        ========================= */
 
-            title:
-                "Pavlo Soroka | Founder",
-
-            text:
-                "Pavlo Soroka — Founder of an E-Commerce Company",
-
-            url:
-                window.location.href
-
-        };
+        async function shareProfile() {
 
 
-        if (navigator.share) {
+            const shareData = {
 
+                title:
+                    "Pavlo Soroka | Founder",
 
-            try {
+                text:
+                    "Pavlo Soroka — Founder of an E-Commerce Company",
 
-                await navigator.share(
-                    shareData
-                );
-
-            } catch (error) {
-
-                console.log(
-                    "Share cancelled"
-                );
-
-            }
-
-
-        } else {
-
-
-            try {
-
-                await navigator.clipboard.writeText(
+                url:
                     window.location.href
-                );
+
+            };
 
 
-                alert(
-                    "Profile link copied!"
-                );
+            if (navigator.share) {
 
-            } catch (error) {
 
-                alert(
-                    "Copy this link: " +
-                    window.location.href
-                );
+                try {
+
+                    await navigator.share(
+                        shareData
+                    );
+
+                } catch (error) {
+
+                    console.log(
+                        "Share cancelled"
+                    );
+
+                }
+
+
+            } else {
+
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        window.location.href
+                    );
+
+
+                    alert(
+                        "Profile link copied!"
+                    );
+
+                } catch (error) {
+
+                    alert(
+                        "Copy this link: " +
+                        window.location.href
+                    );
+
+                }
 
             }
 
         }
 
-    }
 
-
-</script>
+    </script>
 
 </body>
+
 </html>
