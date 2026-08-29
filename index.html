@@ -1,52 +1,1336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Pavlo Soroka</title>
+    <title>Pavlo Soroka | Founder</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #080808;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .card {
-      text-align: center;
-      padding: 40px 20px;
-    }
+        :root {
+            --bg: #090909;
+            --card: #111111;
+            --card-hover: #181818;
+            --gold: #d4af5a;
+            --text: #f5f5f5;
+            --muted: #858585;
+            --border: rgba(255,255,255,.09);
+        }
 
-    h1 {
-      font-size: 42px;
-      letter-spacing: 4px;
-      margin-bottom: 10px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    p {
-      color: #D4AF5A;
-      letter-spacing: 3px;
-      font-size: 14px;
-    }
-  </style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(212,175,90,.14),
+                    transparent 35%
+                ),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px 16px 50px;
+        }
+
+        /* =========================
+           TOP BAR
+        ========================= */
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .logo {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 1px solid rgba(212,175,90,.65);
+            border-radius: 13px;
+
+            background: rgba(212,175,90,.04);
+
+            color: var(--gold);
+
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+        }
+
+        /* =========================
+           LANGUAGE
+        ========================= */
+
+        .language-switch {
+            display: flex;
+
+            padding: 3px;
+
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            background: rgba(255,255,255,.03);
+        }
+
+        .language-switch button {
+            border: none;
+            background: transparent;
+
+            color: #888;
+
+            padding: 7px 11px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .language-switch button.active {
+            background: var(--gold);
+            color: #111;
+        }
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+
+            gap: 22px;
+
+            margin-bottom: 28px;
+        }
+
+        .profile-image {
+            width: 125px;
+            height: 155px;
+
+            flex-shrink: 0;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #252525,
+                    #101010
+                );
+
+            border: 1px solid rgba(212,175,90,.3);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: var(--gold);
+
+            font-family: 'Playfair Display', serif;
+            font-size: 35px;
+        }
+
+        .profile-info h1 {
+            font-size: 29px;
+            line-height: 1.08;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 13px;
+        }
+
+        .role {
+            color: var(--gold);
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+            line-height: 1.8;
+
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           MAIN BUTTONS
+        ========================= */
+
+        .buttons-grid {
+            display: grid;
+
+            grid-template-columns: 1.65fr 1fr;
+
+            gap: 12px;
+        }
+
+        .action-button {
+            min-height: 92px;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 9px;
+
+            text-decoration: none;
+
+            color: var(--text);
+
+            background: rgba(255,255,255,.035);
+
+            border: 1px solid var(--border);
+            border-radius: 17px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            transition:
+                transform .25s,
+                border-color .25s,
+                background .25s;
+        }
+
+        .action-button:hover {
+            transform: translateY(-3px);
+
+            border-color: rgba(212,175,90,.55);
+
+            background: var(--card-hover);
+        }
+
+        .action-button:active {
+            transform: scale(.98);
+        }
+
+        .action-icon {
+            color: var(--gold);
+
+            font-size: 23px;
+
+            line-height: 1;
+        }
+
+        .action-title {
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            font-weight: 600;
+
+            text-align: center;
+        }
+
+        /* =========================
+           SOCIAL
+        ========================= */
+
+        .social-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 12px;
+        }
+
+        /* =========================
+           EMAIL
+        ========================= */
+
+        .email-card {
+            margin-top: 12px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 18px;
+
+            text-decoration: none;
+
+            color: var(--text);
+
+            background: rgba(255,255,255,.035);
+
+            border: 1px solid var(--border);
+            border-radius: 17px;
+
+            transition: .25s;
+        }
+
+        .email-card:hover {
+            border-color: rgba(212,175,90,.55);
+
+            background: var(--card-hover);
+        }
+
+        .email-icon {
+            width: 46px;
+            height: 46px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 13px;
+
+            background: rgba(212,175,90,.08);
+
+            color: var(--gold);
+
+            font-size: 20px;
+        }
+
+        .email-info {
+            flex: 1;
+
+            overflow: hidden;
+        }
+
+        .email-label {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 5px;
+        }
+
+        .email-address {
+            font-size: 13px;
+
+            overflow-wrap: break-word;
+        }
+
+        /* =========================
+           SHARE
+        ========================= */
+
+        .share-button {
+            width: 100%;
+
+            min-height: 58px;
+
+            margin-top: 12px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            border: 1px solid rgba(212,175,90,.25);
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(212,175,90,.08),
+                    rgba(255,255,255,.025)
+                );
+
+            color: var(--text);
+
+            font-family: inherit;
+
+            font-size: 10px;
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .share-button:hover {
+            transform: translateY(-2px);
+
+            border-color: rgba(212,175,90,.6);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(212,175,90,.13),
+                    rgba(255,255,255,.04)
+                );
+        }
+
+        .share-button:active {
+            transform: scale(.98);
+        }
+
+        .share-icon {
+            color: var(--gold);
+
+            font-size: 20px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            margin-top: 30px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(212,175,90,.08),
+                    rgba(255,255,255,.02)
+                );
+
+            border: 1px solid var(--border);
+        }
+
+        .about-label {
+            color: var(--gold);
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 13px;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+
+            font-size: 23px;
+
+            font-weight: 500;
+
+            margin-bottom: 13px;
+        }
+
+        .about p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            margin-top: 35px;
+
+            color: #555;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+        }
+
+        footer .line {
+            width: 50px;
+            height: 1px;
+
+            background: var(--gold);
+
+            opacity: .5;
+
+            margin: 0 auto 18px;
+        }
+
+        /* =========================
+           QR MODAL
+        ========================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            background: rgba(0,0,0,.84);
+
+            backdrop-filter: blur(8px);
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .modal-content {
+            width: 100%;
+
+            max-width: 360px;
+
+            position: relative;
+
+            padding: 32px 25px 28px;
+
+            text-align: center;
+
+            background: #111;
+
+            border: 1px solid rgba(212,175,90,.3);
+
+            border-radius: 24px;
+
+            animation: popup .25s ease;
+        }
+
+        @keyframes popup {
+
+            from {
+                opacity: 0;
+                transform: scale(.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+        .close {
+            position: absolute;
+
+            top: 10px;
+            right: 17px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #999;
+
+            font-size: 27px;
+
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+
+            font-size: 22px;
+
+            font-weight: 500;
+
+            margin-bottom: 8px;
+        }
+
+        .modal-content p {
+            color: #777;
+
+            font-size: 12px;
+
+            margin-bottom: 22px;
+        }
+
+        .qr-placeholder {
+            width: 220px;
+            height: 220px;
+
+            margin: auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #fff;
+
+            color: #111;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 420px) {
+
+            .profile-card {
+                gap: 17px;
+            }
+
+            .profile-image {
+                width: 115px;
+                height: 145px;
+            }
+
+            .profile-info h1 {
+                font-size: 24px;
+            }
+
+            .action-title {
+                font-size: 9px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-  <div class="card">
-    <h1>PAVLO SOROKA</h1>
-    <p>FOUNDER · E-COMMERCE</p>
-  </div>
+<div class="container">
+
+
+    <!-- =========================
+         TOP
+    ========================= -->
+
+    <div class="topbar">
+
+        <div class="logo">
+            PS
+        </div>
+
+
+        <div class="language-switch">
+
+            <button
+                id="enBtn"
+                class="active"
+                onclick="setLanguage('en')">
+
+                EN
+
+            </button>
+
+
+            <button
+                id="uaBtn"
+                onclick="setLanguage('ua')">
+
+                UA
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PROFILE
+    ========================= -->
+
+    <section class="profile-card">
+
+
+        <div class="profile-image">
+
+            <!--
+            КОЛИ БУДЕ ФОТО:
+
+            <img
+                src="your-photo.jpg"
+                alt="Pavlo Soroka">
+            -->
+
+            <div class="profile-placeholder">
+                PS
+            </div>
+
+        </div>
+
+
+        <div class="profile-info">
+
+            <h1>
+                PAVLO<br>
+                SOROKA
+            </h1>
+
+
+            <div
+                class="role"
+                id="role">
+
+                FOUNDER<br>
+                E-COMMERCE COMPANY
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACTS + QR
+    ========================= -->
+
+    <div class="buttons-grid">
+
+
+        <!-- ADD CONTACT -->
+
+        <button
+            class="action-button"
+            onclick="downloadContact()">
+
+            <div class="action-icon">
+                ◉
+            </div>
+
+
+            <div
+                class="action-title"
+                id="contactsText">
+
+                ADD TO CONTACTS
+
+            </div>
+
+        </button>
+
+
+        <!-- QR -->
+
+        <button
+            class="action-button"
+            onclick="openQR()">
+
+            <div class="action-icon">
+                ▣
+            </div>
+
+
+            <div
+                class="action-title"
+                id="qrText">
+
+                QR CODE
+
+            </div>
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         SOCIAL
+    ========================= -->
+
+    <div class="social-grid">
+
+
+        <!-- TELEGRAM -->
+
+        <a
+            href="https://t.me/Pavlo11228"
+            target="_blank"
+            rel="noopener"
+            class="action-button">
+
+            <div class="action-icon">
+                ✈
+            </div>
+
+
+            <div
+                class="action-title"
+                id="telegramText">
+
+                TELEGRAM
+
+            </div>
+
+        </a>
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+            href="https://www.instagram.com/pavlo_4838?igsh=Ynl0M2JmN3MzZXZ6"
+            target="_blank"
+            rel="noopener"
+            class="action-button">
+
+            <div class="action-icon">
+                ◎
+            </div>
+
+
+            <div
+                class="action-title"
+                id="instagramText">
+
+                INSTAGRAM
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         EMAIL
+    ========================= -->
+
+    <a
+        href="mailto:pavlosoroka57@gmail.com"
+        class="email-card">
+
+        <div class="email-icon">
+            ✉
+        </div>
+
+
+        <div class="email-info">
+
+            <div
+                class="email-label"
+                id="emailLabel">
+
+                BUSINESS EMAIL
+
+            </div>
+
+
+            <div class="email-address">
+                pavlosoroka57@gmail.com
+            </div>
+
+        </div>
+
+    </a>
+
+
+    <!-- =========================
+         SHARE
+    ========================= -->
+
+    <button
+        class="share-button"
+        onclick="shareProfile()">
+
+        <span class="share-icon">
+            ↗
+        </span>
+
+
+        <span id="shareText">
+            SHARE PROFILE
+        </span>
+
+    </button>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="about">
+
+
+        <div
+            class="about-label"
+            id="aboutLabel">
+
+            ABOUT
+
+        </div>
+
+
+        <h2 id="aboutTitle">
+
+            Building digital businesses.
+
+        </h2>
+
+
+        <p id="aboutDescription">
+
+            Entrepreneur and founder focused on building and scaling
+            e-commerce businesses. Currently developing multiple
+            online stores and digital projects.
+
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="line"></div>
+
+        © 2026 PAVLO SOROKA
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================
+     QR MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="qrModal">
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close"
+            onclick="closeQR()">
+
+            ×
+
+        </button>
+
+
+        <h3 id="qrModalTitle">
+            My Digital Card
+        </h3>
+
+
+        <p id="qrModalDescription">
+            Scan to open my profile
+        </p>
+
+
+        <!--
+        ПОТІМ ТУТ БУДЕ ТВОЄ QR:
+
+        <img
+            src="qr-code.png"
+            class="qr-image"
+            alt="QR Code">
+        -->
+
+
+        <div class="qr-placeholder">
+
+            QR CODE<br>
+            WILL BE HERE
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    /* =========================
+       TRANSLATIONS
+    ========================= */
+
+    const translations = {
+
+
+        en: {
+
+            role:
+                "FOUNDER<br>E-COMMERCE COMPANY",
+
+            contacts:
+                "ADD TO CONTACTS",
+
+            qr:
+                "QR CODE",
+
+            telegram:
+                "TELEGRAM",
+
+            instagram:
+                "INSTAGRAM",
+
+            email:
+                "BUSINESS EMAIL",
+
+            share:
+                "SHARE PROFILE",
+
+            about:
+                "ABOUT",
+
+            aboutTitle:
+                "Building digital businesses.",
+
+            aboutDescription:
+                "Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently developing multiple online stores and digital projects.",
+
+            qrModalTitle:
+                "My Digital Card",
+
+            qrModalDescription:
+                "Scan to open my profile"
+
+        },
+
+
+        ua: {
+
+            role:
+                "ЗАСНОВНИК<br>E-COMMERCE КОМПАНІЇ",
+
+            contacts:
+                "ДОДАТИ В КОНТАКТИ",
+
+            qr:
+                "QR КОД",
+
+            telegram:
+                "ТЕЛЕГРАМ",
+
+            instagram:
+                "ІНСТАГРАМ",
+
+            email:
+                "РОБОЧА ПОШТА",
+
+            share:
+                "ПОДІЛИТИСЯ ПРОФІЛЕМ",
+
+            about:
+                "ПРО МЕНЕ",
+
+            aboutTitle:
+                "Створюю цифрові бізнеси.",
+
+            aboutDescription:
+                "Підприємець та засновник, який розвивається у сфері e-commerce та створенні цифрових бізнесів. Зараз працюю над розвитком онлайн-магазинів і власних цифрових проєктів.",
+
+            qrModalTitle:
+                "Моя цифрова візитка",
+
+            qrModalDescription:
+                "Відскануйте QR-код, щоб відкрити профіль"
+
+        }
+
+    };
+
+
+    /* =========================
+       LANGUAGE
+    ========================= */
+
+    function setLanguage(language) {
+
+
+        document.documentElement.lang =
+            language;
+
+
+        document.getElementById("role").innerHTML =
+            translations[language].role;
+
+
+        document.getElementById("contactsText").innerText =
+            translations[language].contacts;
+
+
+        document.getElementById("qrText").innerText =
+            translations[language].qr;
+
+
+        document.getElementById("telegramText").innerText =
+            translations[language].telegram;
+
+
+        document.getElementById("instagramText").innerText =
+            translations[language].instagram;
+
+
+        document.getElementById("emailLabel").innerText =
+            translations[language].email;
+
+
+        document.getElementById("shareText").innerText =
+            translations[language].share;
+
+
+        document.getElementById("aboutLabel").innerText =
+            translations[language].about;
+
+
+        document.getElementById("aboutTitle").innerText =
+            translations[language].aboutTitle;
+
+
+        document.getElementById("aboutDescription").innerText =
+            translations[language].aboutDescription;
+
+
+        document.getElementById("qrModalTitle").innerText =
+            translations[language].qrModalTitle;
+
+
+        document.getElementById("qrModalDescription").innerText =
+            translations[language].qrModalDescription;
+
+
+        document.getElementById("enBtn")
+            .classList.remove("active");
+
+
+        document.getElementById("uaBtn")
+            .classList.remove("active");
+
+
+        if (language === "en") {
+
+            document.getElementById("enBtn")
+                .classList.add("active");
+
+        } else {
+
+            document.getElementById("uaBtn")
+                .classList.add("active");
+
+        }
+
+    }
+
+
+    /* =========================
+       QR
+    ========================= */
+
+    function openQR() {
+
+        document.getElementById("qrModal")
+            .style.display = "flex";
+
+    }
+
+
+    function closeQR() {
+
+        document.getElementById("qrModal")
+            .style.display = "none";
+
+    }
+
+
+    /* CLOSE QR OUTSIDE */
+
+    document
+        .getElementById("qrModal")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === this) {
+
+                    closeQR();
+
+                }
+
+            }
+        );
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    function downloadContact() {
+
+
+        const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Pavlo Soroka
+N:Soroka;Pavlo;;;
+TEL;TYPE=CELL:+380953243201
+EMAIL:pavlosoroka57@gmail.com
+TITLE:Founder
+ORG:E-Commerce Company
+URL:${window.location.href}
+END:VCARD`;
+
+
+        const blob = new Blob(
+            [vCard],
+            {
+                type: "text/vcard"
+            }
+        );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href = url;
+
+
+        link.download =
+            "Pavlo-Soroka.vcf";
+
+
+        document.body.appendChild(link);
+
+
+        link.click();
+
+
+        document.body.removeChild(link);
+
+
+        URL.revokeObjectURL(url);
+
+    }
+
+
+    /* =========================
+       SHARE PROFILE
+    ========================= */
+
+    async function shareProfile() {
+
+
+        const shareData = {
+
+            title:
+                "Pavlo Soroka | Founder",
+
+            text:
+                "Pavlo Soroka — Founder of an E-Commerce Company",
+
+            url:
+                window.location.href
+
+        };
+
+
+        if (navigator.share) {
+
+
+            try {
+
+                await navigator.share(
+                    shareData
+                );
+
+            } catch (error) {
+
+                console.log(
+                    "Share cancelled"
+                );
+
+            }
+
+
+        } else {
+
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    window.location.href
+                );
+
+
+                alert(
+                    "Profile link copied!"
+                );
+
+            } catch (error) {
+
+                alert(
+                    "Copy this link: " +
+                    window.location.href
+                );
+
+            }
+
+        }
+
+    }
+
+
+</script>
 
 </body>
 </html>
