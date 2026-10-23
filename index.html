@@ -2,1293 +2,1043 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Pavlo Soroka | Founder</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #090909;
-            --card: #111111;
-            --card-hover: #181818;
-            --gold: #d4af5a;
-            --text: #f5f5f5;
-            --muted: #858585;
-            --border: rgba(255, 255, 255, .09);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Manrope', sans-serif;
-            background:
-                radial-gradient(circle at 50% -10%,
-                    rgba(212, 175, 90, .14),
-                    transparent 35%),
-                var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px 16px 50px;
-        }
-
-        /* =========================
-           TOP BAR
-        ========================= */
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 35px;
-        }
-
-        .logo {
-            width: 44px;
-            height: 44px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            border: 1px solid rgba(212, 175, 90, .65);
-            border-radius: 13px;
-
-            background: rgba(212, 175, 90, .04);
-
-            color: var(--gold);
-
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-        }
-
-        /* =========================
-           LANGUAGE
-        ========================= */
-
-        .language-switch {
-            display: flex;
-
-            padding: 3px;
-
-            border: 1px solid var(--border);
-            border-radius: 11px;
-
-            background: rgba(255, 255, 255, .03);
-        }
-
-        .language-switch button {
-            border: none;
-            background: transparent;
-
-            color: #888;
-
-            padding: 7px 11px;
-
-            border-radius: 8px;
-
-            cursor: pointer;
-
-            font-family: inherit;
-            font-size: 11px;
-            font-weight: 700;
-
-            transition: .25s;
-        }
-
-        .language-switch button.active {
-            background: var(--gold);
-            color: #111;
-        }
-
-        /* =========================
-           PROFILE
-        ========================= */
-
-        .profile-card {
-            display: flex;
-            align-items: center;
-
-            gap: 22px;
-
-            margin-bottom: 28px;
-        }
-
-        .profile-image {
-            width: 125px;
-            height: 155px;
-
-            flex-shrink: 0;
-
-            overflow: hidden;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(145deg,
-                    #252525,
-                    #101010);
-
-            border: 1px solid rgba(212, 175, 90, .3);
-
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, .3);
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-placeholder {
-            width: 100%;
-            height: 100%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            color: var(--gold);
-
-            font-family: 'Playfair Display', serif;
-            font-size: 35px;
-        }
-
-        .profile-info h1 {
-            font-size: 29px;
-            line-height: 1.08;
-
-            font-weight: 600;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 13px;
-        }
-
-        .role {
-            color: var(--gold);
-
-            font-size: 11px;
-
-            letter-spacing: 2px;
-            line-height: 1.8;
-
-            text-transform: uppercase;
-        }
-
-        /* =========================
-           MAIN BUTTONS
-        ========================= */
-
-        .buttons-grid {
-            display: grid;
-
-            grid-template-columns: 1.65fr 1fr;
-
-            gap: 12px;
-        }
-
-        .action-button {
-            min-height: 92px;
-
-            display: flex;
-            flex-direction: column;
-
-            justify-content: center;
-            align-items: center;
-
-            gap: 9px;
-
-            text-decoration: none;
-
-            color: var(--text);
-
-            background: rgba(255, 255, 255, .035);
-
-            border: 1px solid var(--border);
-            border-radius: 17px;
-
-            cursor: pointer;
-
-            font-family: inherit;
-
-            transition:
-                transform .25s,
-                border-color .25s,
-                background .25s;
-        }
-
-        .action-button:hover {
-            transform: translateY(-3px);
-
-            border-color: rgba(212, 175, 90, .55);
-
-            background: var(--card-hover);
-        }
-
-        .action-button:active {
-            transform: scale(.98);
-        }
-
-        .action-icon {
-            color: var(--gold);
-
-            font-size: 23px;
-
-            line-height: 1;
-        }
-
-        .action-icon {
-            height: 24px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .action-title {
-            font-size: 10px;
-
-            letter-spacing: 1px;
-
-            font-weight: 600;
-
-            text-align: center;
-        }
-
-        /* =========================
-           SOCIAL
-        ========================= */
-
-        .social-grid {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 12px;
-
-            margin-top: 12px;
-        }
-
-        /* =========================
-           EMAIL
-        ========================= */
-
-        .email-card {
-            margin-top: 12px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 15px;
-
-            padding: 18px;
-
-            text-decoration: none;
-
-            color: var(--text);
-
-            background: rgba(255, 255, 255, .035);
-
-            border: 1px solid var(--border);
-            border-radius: 17px;
-
-            transition: .25s;
-        }
-
-        .email-card:hover {
-            border-color: rgba(212, 175, 90, .55);
-
-            background: var(--card-hover);
-        }
-
-        .email-icon {
-            width: 46px;
-            height: 46px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            border-radius: 13px;
-
-            background: rgba(212, 175, 90, .08);
-
-            color: var(--gold);
-
-            font-size: 20px;
-        }
-
-        .email-info {
-            flex: 1;
-
-            overflow: hidden;
-        }
-
-        .email-label {
-            color: var(--muted);
-
-            font-size: 10px;
-
-            letter-spacing: 1.5px;
-
-            margin-bottom: 5px;
-        }
-
-        .email-address {
-            font-size: 13px;
-
-            overflow-wrap: break-word;
-        }
-
-        /* =========================
-           SHARE
-        ========================= */
-
-        .share-button {
-            width: 100%;
-
-            min-height: 58px;
-
-            margin-top: 12px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            gap: 10px;
-
-            border: 1px solid rgba(212, 175, 90, .25);
-
-            border-radius: 17px;
-
-            background:
-                linear-gradient(135deg,
-                    rgba(212, 175, 90, .08),
-                    rgba(255, 255, 255, .025));
-
-            color: var(--text);
-
-            font-family: inherit;
-
-            font-size: 10px;
-            font-weight: 600;
-
-            letter-spacing: 1.5px;
-
-            cursor: pointer;
-
-            transition: .25s;
-        }
-
-        .share-button:hover {
-            transform: translateY(-2px);
-
-            border-color: rgba(212, 175, 90, .6);
-
-            background:
-                linear-gradient(135deg,
-                    rgba(212, 175, 90, .13),
-                    rgba(255, 255, 255, .04));
-        }
-
-        .share-button:active {
-            transform: scale(.98);
-        }
-
-        .share-icon {
-            color: var(--gold);
-
-            font-size: 20px;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about {
-            margin-top: 30px;
-
-            padding: 25px;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(135deg,
-                    rgba(212, 175, 90, .08),
-                    rgba(255, 255, 255, .02));
-
-            border: 1px solid var(--border);
-        }
-
-        .about-label {
-            color: var(--gold);
-
-            font-size: 10px;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 13px;
-        }
-
-        .about h2 {
-            font-family: 'Playfair Display', serif;
-
-            font-size: 23px;
-
-            font-weight: 500;
-
-            margin-bottom: 13px;
-        }
-
-        .about p {
-            color: var(--muted);
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            text-align: center;
-
-            margin-top: 35px;
-
-            color: #555;
-
-            font-size: 10px;
-
-            letter-spacing: 1px;
-        }
-
-        footer .line {
-            width: 50px;
-            height: 1px;
-
-            background: var(--gold);
-
-            opacity: .5;
-
-            margin: 0 auto 18px;
-        }
-
-        /* =========================
-           QR MODAL
-        ========================= */
-
-        .modal {
-            display: none;
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 100;
-
-            background: rgba(0, 0, 0, .84);
-
-            backdrop-filter: blur(8px);
-
-            justify-content: center;
-            align-items: center;
-
-            padding: 20px;
-        }
-
-        .modal-content {
-            width: 100%;
-
-            max-width: 360px;
-
-            position: relative;
-
-            padding: 32px 25px 28px;
-
-            text-align: center;
-
-            background: #111;
-
-            border: 1px solid rgba(212, 175, 90, .3);
-
-            border-radius: 24px;
-
-            animation: popup .25s ease;
-        }
-
-        @keyframes popup {
-
-            from {
-                opacity: 0;
-                transform: scale(.94);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-        }
-
-        .close {
-            position: absolute;
-
-            top: 10px;
-            right: 17px;
-
-            border: none;
-
-            background: transparent;
-
-            color: #999;
-
-            font-size: 27px;
-
-            cursor: pointer;
-        }
-
-        .modal-content h3 {
-            font-family: 'Playfair Display', serif;
-
-            font-size: 22px;
-
-            font-weight: 500;
-
-            margin-bottom: 8px;
-        }
-
-        .modal-content p {
-            color: #777;
-
-            font-size: 12px;
-
-            margin-bottom: 22px;
-        }
-
-        .qr-placeholder {
-            width: 220px;
-            height: 220px;
-
-            margin: auto;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background: #fff;
-
-            color: #111;
-
-            border-radius: 12px;
-
-            text-align: center;
-
-            font-size: 13px;
-
-            font-weight: 600;
-        }
-
-        .qr-image {
-            width: 220px;
-            height: 220px;
-
-            object-fit: contain;
-
-            display: block;
-
-            margin: auto;
-
-            background: white;
-
-            padding: 8px;
-
-            border-radius: 12px;
-        }
-
-        .icon-img {
-            width: 23px;
-            height: 23px;
-            border-radius: 10px;
-            object-fit: contain;
-
-            filter: invert(76%) sepia(37%) saturate(600%) hue-rotate(3deg) brightness(92%);
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 420px) {
-
-            .profile-card {
-                gap: 17px;
-            }
-
-            .profile-image {
-                width: 115px;
-                height: 145px;
-            }
-
-            .profile-info h1 {
-                font-size: 24px;
-            }
-
-            .action-title {
-                font-size: 9px;
-            }
-
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Pavlo Soroka — Founder building e-commerce businesses and digital projects.">
+  <title>Pavlo Soroka | Founder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --gold: #d4af5a;
+      --text: #f5f5f5;
+      --muted: #858585;
+      --border: rgba(255, 255, 255, .09);
+      --cyan: #58e8f3
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px
+    }
+
+    body {
+      font-family: Manrope, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: radial-gradient(ellipse at 50% -10%, rgba(212, 175, 90, .14), transparent 38%), radial-gradient(ellipse at 100% 55%, rgba(38, 105, 111, .07), transparent 32%), var(--bg)
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .16;
+      background-image: radial-gradient(rgba(255, 255, 255, .3) .55px, transparent .55px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(#000, transparent 78%)
+    }
+
+    a {
+      color: inherit
+    }
+
+    button {
+      font: inherit
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: auto;
+      padding: 22px 18px 52px
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 35px
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(212, 175, 90, .65);
+      border-radius: 13px;
+      background: rgba(212, 175, 90, .04);
+      color: var(--gold);
+      font: 20px 'Playfair Display', serif
+    }
+
+    .language-switch {
+      display: flex;
+      padding: 3px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, .03)
+    }
+
+    .language-switch button {
+      border: 0;
+      background: transparent;
+      color: #888;
+      padding: 7px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 800;
+      transition: .25s
+    }
+
+    .language-switch button.active {
+      background: var(--gold);
+      color: #111
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 28px;
+      animation: riseIn .7s .08s both
+    }
+
+    .profile-image {
+      width: 125px;
+      height: 155px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #252525, #101010);
+      border: 1px solid rgba(212, 175, 90, .3);
+      box-shadow: 0 15px 35px #0005
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .profile-info h1 {
+      font-size: 29px;
+      line-height: 1.08;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 13px
+    }
+
+    .role {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      text-transform: uppercase
+    }
+
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: 1.65fr 1fr;
+      gap: 12px
+    }
+
+    .action-button {
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      color: var(--text);
+      background: #ffffff09;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      cursor: pointer;
+      transition: transform .25s, border-color .25s, background .25s, box-shadow .25s
+    }
+
+    .action-button:hover {
+      transform: translateY(-3px);
+      border-color: #d4af5a8c;
+      background: #181818;
+      box-shadow: 0 12px 30px #0003
+    }
+
+    .action-button:active,
+    .share-button:active {
+      transform: scale(.98)
+    }
+
+    .action-icon {
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 23px
+    }
+
+    .action-title {
+      font-size: 10px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-align: center
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px
+    }
+
+    .email-card {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 18px;
+      text-decoration: none;
+      color: var(--text);
+      background: #ffffff09;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      transition: .25s
+    }
+
+    .email-card:hover {
+      border-color: #d4af5a8c;
+      background: #181818
+    }
+
+    .email-icon {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 13px;
+      background: #d4af5a14;
+      color: var(--gold);
+      font-size: 20px
+    }
+
+    .email-info {
+      flex: 1;
+      overflow: hidden
+    }
+
+    .email-label {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-bottom: 5px
+    }
+
+    .email-address {
+      font-size: 13px;
+      overflow-wrap: anywhere
+    }
+
+    .share-button {
+      width: 100%;
+      min-height: 58px;
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #d4af5a40;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #d4af5a14, #ffffff06);
+      color: var(--text);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: .25s
+    }
+
+    .share-button:hover {
+      transform: translateY(-2px);
+      border-color: #d4af5a99
+    }
+
+    .icon-img {
+      width: 23px;
+      height: 23px;
+      border-radius: 7px;
+      object-fit: contain;
+      filter: invert(76%) sepia(37%) saturate(600%) hue-rotate(3deg) brightness(92%)
+    }
+
+    .about {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #d4af5a14, #ffffff05);
+      border: 1px solid var(--border)
+    }
+
+    .about-label,
+    .section-eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 13px;
+      font-weight: 800
+    }
+
+    .about h2 {
+      font: 500 23px 'Playfair Display', serif;
+      margin-bottom: 13px
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8
+    }
+
+    .projects {
+      margin-top: 43px
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 19px
+    }
+
+    .section-heading h2 {
+      font: 500 28px 'Playfair Display', serif
+    }
+
+    .section-heading .section-eyebrow {
+      margin-bottom: 7px
+    }
+
+    .section-note {
+      color: #686868;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-align: right
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px
+    }
+
+    .project-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: 22px;
+      min-height: 255px;
+      padding: 23px;
+      background: linear-gradient(140deg, #d4af5a16, #111 58%);
+      border: 1px solid #d4af5a38;
+      transition: transform .35s, border-color .35s, box-shadow .35s
+    }
+
+    .project-card:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 240px;
+      height: 240px;
+      right: -95px;
+      top: -110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #d4af5a33, transparent 68%);
+      filter: blur(4px);
+      animation: orbFloat 8s ease-in-out infinite alternate
+    }
+
+    .project-card:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      opacity: .16;
+      pointer-events: none;
+      background: linear-gradient(115deg, transparent 15%, #ffffff14 48%, transparent 65%);
+      transform: translateX(-120%);
+      transition: transform .8s
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: #d4af5a8c;
+      box-shadow: 0 18px 42px #0004, 0 0 32px #d4af5a0d
+    }
+
+    .project-card:hover:after {
+      transform: translateX(120%)
+    }
+
+    .project-card.mystic {
+      background: linear-gradient(140deg, #58e8f314, #0c1114 58%);
+      border-color: #58e8f338
+    }
+
+    .project-card.mystic:before {
+      background: radial-gradient(circle, #2fd4e733, transparent 68%)
+    }
+
+    .project-card.mystic:hover {
+      border-color: #58e8f38c;
+      box-shadow: 0 18px 42px #0004, 0 0 32px #58e8f30f
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px
+    }
+
+    .project-kicker {
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 1.7px;
+      font-weight: 800;
+      text-transform: uppercase
+    }
+
+    .project-mark {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #d4af5a59;
+      border-radius: 13px;
+      color: var(--gold);
+      background: #d4af5a0e;
+      font: 20px 'Playfair Display', serif
+    }
+
+    .mystic .project-kicker,
+    .mystic .project-mark {
+      color: var(--cyan)
+    }
+
+    .mystic .project-mark {
+      border-color: #58e8f359;
+      background: #58e8f30f
+    }
+
+    .project-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin-bottom: 9px
+    }
+
+    .project-description {
+      max-width: 500px;
+      color: #a0a0a0;
+      font-size: 12px;
+      line-height: 1.75;
+      margin-bottom: 20px
+    }
+
+    .project-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      padding: 15px 0;
+      margin-bottom: 17px;
+      border-top: 1px solid #ffffff14;
+      border-bottom: 1px solid #ffffff14
+    }
+
+    .project-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+
+    .project-stat strong {
+      color: #f4e2b5;
+      font-size: 17px;
+      letter-spacing: .2px;
+      font-weight: 800
+    }
+
+    .project-stat span {
+      color: #777;
+      font-size: 9px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase
+    }
+
+    .mystic .project-stat strong {
+      color: #a6f5fa
+    }
+
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #a6f5fa !important;
+      font-size: 10px !important;
+      letter-spacing: 1px;
+      font-weight: 800
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 10px #58e8f3cc
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      font-weight: 800;
+      transition: gap .25s, color .25s
+    }
+
+    .project-link:hover {
+      gap: 14px;
+      color: #f4e2b5
+    }
+
+    .mystic .project-link:hover {
+      color: var(--cyan)
+    }
+
+    .project-link .arrow {
+      font-size: 17px;
+      line-height: 1
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 35px;
+      color: #555;
+      font-size: 10px;
+      letter-spacing: 1px
+    }
+
+    footer .line {
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .5;
+      margin: 0 auto 18px
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: #000d;
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px
+    }
+
+    .modal.open {
+      display: flex
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 360px;
+      position: relative;
+      padding: 32px 25px 28px;
+      text-align: center;
+      background: #111;
+      border: 1px solid #d4af5a4d;
+      border-radius: 24px;
+      animation: popup .25s ease
+    }
+
+    @keyframes popup {
+      from {
+        opacity: 0;
+        transform: scale(.94)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 17px;
+      border: 0;
+      background: transparent;
+      color: #999;
+      font-size: 27px;
+      cursor: pointer
+    }
+
+    .modal-content h3 {
+      font: 500 22px 'Playfair Display', serif;
+      margin-bottom: 8px
+    }
+
+    .modal-content p {
+      color: #777;
+      font-size: 12px;
+      margin-bottom: 22px
+    }
+
+    .qr-image {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+      background: white;
+      padding: 8px;
+      border-radius: 12px
+    }
+
+    .modal-open {
+      overflow: hidden
+    }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #070707;
+      overflow: hidden;
+      transition: opacity .75s ease, visibility .75s ease
+    }
+
+    .intro.is-done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none
+    }
+
+    .intro:before,
+    .intro:after {
+      content: "";
+      position: absolute;
+      width: 75vw;
+      height: 75vw;
+      max-width: 700px;
+      max-height: 700px;
+      border-radius: 50%;
+      border: 1px solid #d4af5a17;
+      animation: ringPulse 4s ease-in-out infinite
+    }
+
+    .intro:after {
+      width: 55vw;
+      height: 55vw;
+      max-width: 520px;
+      max-height: 520px;
+      animation-delay: -1.5s;
+      border-color: #d4af5a21
+    }
+
+    .intro-glow {
+      position: absolute;
+      width: 450px;
+      height: 200px;
+      background: radial-gradient(ellipse, #d4af5a24, transparent 70%);
+      filter: blur(18px);
+      animation: glowMove 4s ease-in-out infinite alternate
+    }
+
+    .intro-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+      animation: introReveal 1s .2s both
+    }
+
+    .intro-monogram {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 23px;
+      border: 1px solid #d4af5ab3;
+      border-radius: 21px;
+      color: var(--gold);
+      font: 500 34px 'Playfair Display', serif;
+      box-shadow: 0 0 45px #d4af5a1f, inset 0 0 25px #d4af5a0a
+    }
+
+    .intro-name {
+      font-size: clamp(22px, 4vw, 34px);
+      letter-spacing: clamp(3px, 1vw, 7px);
+      font-weight: 600;
+      margin-bottom: 12px
+    }
+
+    .intro-role {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      line-height: 1.9
+    }
+
+    .intro-skip {
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      bottom: 20px;
+      border: 1px solid #ffffff26;
+      border-radius: 999px;
+      background: #ffffff0a;
+      color: #aaa;
+      padding: 10px 15px;
+      font-size: 10px;
+      letter-spacing: 1.2px;
+      cursor: pointer
+    }
+
+    @keyframes introReveal {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+        filter: blur(5px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0)
+      }
+    }
+
+    @keyframes ringPulse {
+
+      0%,
+      100% {
+        transform: scale(.94);
+        opacity: .4
+      }
+
+      50% {
+        transform: scale(1.04);
+        opacity: 1
+      }
+    }
+
+    @keyframes glowMove {
+      from {
+        transform: translateX(-50px)
+      }
+
+      to {
+        transform: translateX(50px)
+      }
+    }
+
+    @keyframes orbFloat {
+      from {
+        transform: translate3d(0, 0, 0) scale(.95)
+      }
+
+      to {
+        transform: translate3d(-15px, 18px, 0) scale(1.08)
+      }
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @media(max-width:480px) {
+      .container {
+        padding: 18px 15px 42px
+      }
+
+      .profile-card {
+        gap: 17px
+      }
+
+      .profile-image {
+        width: 110px;
+        height: 140px
+      }
+
+      .profile-info h1 {
+        font-size: 24px
+      }
+
+      .action-title {
+        font-size: 9px
+      }
+
+      .about {
+        padding: 22px
+      }
+
+      .section-heading h2 {
+        font-size: 25px
+      }
+
+      .section-note {
+        max-width: 115px;
+        line-height: 1.6
+      }
+
+      .project-card {
+        padding: 20px
+      }
+
+      .project-card h3 {
+        font-size: 22px
+      }
+
+      .project-stat strong {
+        font-size: 16px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
+    }
+  </style>
 </head>
 
-
 <body>
+  <div class="intro" id="intro" aria-label="Pavlo Soroka introduction">
+    <div class="intro-glow"></div>
+    <div class="intro-content">
+      <div class="intro-monogram">PS</div>
+      <div class="intro-name">PAVLO SOROKA</div>
+      <div class="intro-role" id="introRole">FOUNDER<br>E-COMMERCE COMPANY</div>
+    </div><button class="intro-skip" id="skipIntro" type="button">SKIP INTRO ↗</button>
+  </div>
+  <main class="container">
+    <header class="topbar">
+      <div class="logo" aria-label="PS monogram">PS</div>
+      <div class="language-switch" aria-label="Choose language">
+        <button id="enBtn" class="active" onclick="setLanguage('en')" type="button">EN</button>
+        <button id="uaBtn" onclick="setLanguage('ua')" type="button">UA</button>
+      </div>
+    </header>
+    <section class="profile-card">
+      <div class="profile-image"><img src="Assets/photo.jpg" alt="Pavlo Soroka" onerror="this.style.display='none'">
+      </div>
+      <div class="profile-info">
+        <h1>PAVLO<br>SOROKA</h1>
+        <div class="role" id="role">FOUNDER<br>E-COMMERCE COMPANY</div>
+      </div>
+    </section>
+    <section class="buttons-grid" aria-label="Contact actions">
+      <button class="action-button" onclick="downloadContact()" type="button">
+        <div class="action-icon"><img src="Assets/PhoneIcon.jpg" class="icon-img" alt=""></div>
+        <div class="action-title" id="contactsText">ADD TO CONTACTS</div>
+      </button>
+      <button class="action-button" onclick="openQR()" type="button">
+        <div class="action-icon"><img src="Assets/QR-codeIcon.jpg" class="icon-img" alt=""></div>
+        <div class="action-title" id="qrText">QR CODE</div>
+      </button>
+    </section>
+    <section class="social-grid" aria-label="Social profiles">
+      <a href="https://t.me/Pavlo11228" target="_blank" rel="noopener noreferrer" class="action-button">
+        <div class="action-icon"><img src="Assets/BlackIconTelegram.jpg" class="icon-img" alt=""></div>
+        <div class="action-title" id="telegramText">TELEGRAM</div>
+      </a>
+      <a href="https://www.instagram.com/pavlo_4838?igsh=Ynl0M2JmN3MzZXZ6" target="_blank" rel="noopener noreferrer"
+        class="action-button">
+        <div class="action-icon"><img src="Assets/BlackIconInstagram.jpg" class="icon-img" alt=""></div>
+        <div class="action-title" id="instagramText">INSTAGRAM</div>
+      </a>
+    </section>
+    <a href="mailto:pavlosoroka57@gmail.com" class="email-card">
+      <div class="email-icon" aria-hidden="true">✉</div>
+      <div class="email-info">
+        <div class="email-label" id="emailLabel">BUSINESS EMAIL</div>
+        <div class="email-address">pavlosoroka57@gmail.com</div>
+      </div>
+    </a>
+    <button class="share-button" onclick="shareProfile()" type="button"><img src="Assets/ShareIcon.jpg" class="icon-img"
+        alt=""><span id="shareText">SHARE PROFILE</span></button>
 
-    <div class="container">
+    <section class="about reveal">
+      <div class="about-label" id="aboutLabel">ABOUT</div>
+      <h2 id="aboutTitle">Building digital businesses.</h2>
+      <p id="aboutDescription">Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently
+        developing multiple online stores and digital projects.</p>
+    </section>
 
-
-        <!-- =========================
-         TOP
-    ========================= -->
-
-        <div class="topbar">
-
-            <div class="logo">
-                PS
-            </div>
-
-
-            <div class="language-switch">
-
-                <button id="enBtn" class="active" onclick="setLanguage('en')">
-
-                    EN
-
-                </button>
-
-
-                <button id="uaBtn" onclick="setLanguage('ua')">
-
-                    UA
-
-                </button>
-
-            </div>
-
+    <section class="projects reveal" id="projects">
+      <div class="section-heading">
+        <div>
+          <div class="section-eyebrow" id="projectsEyebrow">SELECTED WORK</div>
+          <h2 id="projectsTitle">My Projects</h2>
         </div>
-
-
-        <!-- =========================
-         PROFILE
-    ========================= -->
-
-        <section class="profile-card">
-
-
-            <div class="profile-image">
-
-                <img src="Assets/photo.jpg" alt="Pavlo Soroka">
+        <div class="section-note" id="projectsNote">IDEAS INTO REAL BUSINESSES</div>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card sobolyatko">
+          <div class="project-top">
+            <div class="project-kicker" id="sobolyatkoKicker">E-COMMERCE · HOME & LIGHTING</div>
+            <div class="project-mark" aria-hidden="true">S</div>
+          </div>
+          <h3>Sobolyatko</h3>
+          <p class="project-description" id="sobolyatkoDescription">An e-commerce store for decorative lighting, built
+            from launch to real customer orders.</p>
+          <div class="project-stats">
+            <div class="project-stat"><strong>150+</strong><span id="sobolyatkoOrders">Orders</span></div>
+            <div class="project-stat"><strong>$13,000+</strong><span id="sobolyatkoProfit">Net profit</span></div>
+          </div>
+          <a class="project-link" href="https://bys-user-store-189040-9n8idker.myshopify.com/" target="_blank"
+            rel="noopener noreferrer"><span id="sobolyatkoLink">VISIT STORE</span><span class="arrow"
+              aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project-card mystic">
+          <div class="project-top">
+            <div class="project-kicker" id="mysticKicker">E-COMMERCE · SEASONAL PRODUCTS</div>
+            <div class="project-mark" aria-hidden="true">✧</div>
+          </div>
+          <h3>Mystic Lumos</h3>
+          <p class="project-description" id="mysticDescription">A new e-commerce brand built around magical seasonal
+            products, with a focus on brand development and growth.</p>
+          <div class="project-stats">
+            <div class="project-stat"><strong class="project-status"><span class="status-dot"></span><span
+                  id="mysticStatus">Recently launched</span></strong><span id="mysticStageLabel">Current stage</span>
             </div>
-
-
-            <div class="profile-info">
-
-                <h1>
-                    PAVLO<br>
-                    SOROKA
-                </h1>
-
-
-                <div class="role" id="role">
-
-                    FOUNDER<br>
-                    E-COMMERCE COMPANY
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-         CONTACTS + QR
-    ========================= -->
-
-        <div class="buttons-grid">
-
-
-            <!-- ADD CONTACT -->
-
-            <button class="action-button" onclick="downloadContact()">
-
-                <div class="action-icon">
-                    <img src="Assets/PhoneIcon.jpg" class="icon-img" alt="Add Contact">
-                </div>
-
-
-                <div class="action-title" id="contactsText">
-
-                    ADD TO CONTACTS
-
-                </div>
-
-            </button>
-
-
-            <!-- QR -->
-
-            <button class="action-button" onclick="openQR()">
-
-                <div class="action-icon">
-                    <img src="Assets/QR-codeIcon.jpg" class="icon-img" alt="QR Code">
-                </div>
-
-
-                <div class="action-title" id="qrText">
-
-                    QR CODE
-
-                </div>
-
-            </button>
-
-        </div>
-
-
-        <!-- =========================
-         SOCIAL
-    ========================= -->
-
-        <div class="social-grid">
-
-
-            <!-- TELEGRAM -->
-
-            <a href="https://t.me/Pavlo11228" target="_blank" rel="noopener" class="action-button">
-
-                <div class="action-icon">
-                    <img src="Assets/BlackIconTelegram.jpg" class="icon-img" alt="Telegram">
-                </div>
-
-
-                <div class="action-title" id="telegramText">
-
-                    TELEGRAM
-
-                </div>
-
-            </a>
-
-
-            <!-- INSTAGRAM -->
-
-            <a href="https://www.instagram.com/pavlo_4838?igsh=Ynl0M2JmN3MzZXZ6" target="_blank" rel="noopener"
-                class="action-button">
-
-                <div class="action-icon">
-                    <img src="Assets/BlackIconInstagram.jpg" class="icon-img" alt="Instagram">
-                </div>
-
-
-                <div class="action-title" id="instagramText">
-
-                    INSTAGRAM
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- =========================
-         EMAIL
-    ========================= -->
-
-        <a href="mailto:pavlosoroka57@gmail.com" class="email-card">
-
-            <div class="email-icon">
-                ✉
-            </div>
-
-
-            <div class="email-info">
-
-                <div class="email-label" id="emailLabel">
-
-                    BUSINESS EMAIL
-
-                </div>
-
-
-                <div class="email-address">
-                    pavlosoroka57@gmail.com
-                </div>
-
-            </div>
-
-        </a>
-
-
-        <!-- =========================
-         SHARE
-    ========================= -->
-
-        <button class="share-button" onclick="shareProfile()">
-
-            <img src="Assets/ShareIcon.jpg" class="icon-img" alt="Share">
-
-            <span id="shareText">
-                SHARE PROFILE
-            </span>
-
-        </button>
-
-
-        <!-- =========================
-         ABOUT
-    ========================= -->
-
-        <section class="about">
-
-
-            <div class="about-label" id="aboutLabel">
-
-                ABOUT
-
-            </div>
-
-
-            <h2 id="aboutTitle">
-
-                Building digital businesses.
-
-            </h2>
-
-
-            <p id="aboutDescription">
-
-                Entrepreneur and founder focused on building and scaling
-                e-commerce businesses. Currently developing multiple
-                online stores and digital projects.
-
-            </p>
-
-        </section>
-
-
-        <!-- =========================
-         FOOTER
-    ========================= -->
-
-        <footer>
-
-            <div class="line"></div>
-
-            © 2026 PAVLO SOROKA
-
-        </footer>
-
-
+            <div class="project-stat"><strong id="mysticFocus">Brand & Growth</strong><span
+                id="mysticFocusLabel">Current focus</span></div>
+          </div>
+          <a class="project-link" href="https://mysticlumos.com/" target="_blank" rel="noopener noreferrer"><span
+              id="mysticLink">EXPLORE STORE</span><span class="arrow" aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+    <footer>
+      <div class="line"></div>© 2026 PAVLO SOROKA
+    </footer>
+  </main>
+
+  <div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+    <div class="modal-content"><button class="close" onclick="closeQR()" aria-label="Close QR code"
+        type="button">×</button>
+      <h3 id="qrModalTitle">My Digital Card</h3>
+      <p id="qrModalDescription">Scan to open my profile</p><img src="Assets/QR-code.jpg" class="qr-image"
+        alt="QR code linking to Pavlo's digital card">
     </div>
-
-
-    <!-- =========================
-     QR MODAL
-========================= -->
-
-    <div class="modal" id="qrModal">
-
-
-        <div class="modal-content">
-
-
-            <button class="close" onclick="closeQR()">
-
-                ×
-
-            </button>
-
-
-            <h3 id="qrModalTitle">
-                My Digital Card
-            </h3>
-
-
-            <p id="qrModalDescription">
-                Scan to open my profile
-            </p>
-
-
-            <img src="Assets/QR-code.jpg" class="qr-image" alt="QR Code">
-
-        </div>
-
-    </div>
-
-
-    <script>
-
-
-        /* =========================
-           TRANSLATIONS
-        ========================= */
-
-        const translations = {
-
-
-            en: {
-
-                role:
-                    "FOUNDER<br>E-COMMERCE COMPANY",
-
-                contacts:
-                    "ADD TO CONTACTS",
-
-                qr:
-                    "QR CODE",
-
-                telegram:
-                    "TELEGRAM",
-
-                instagram:
-                    "INSTAGRAM",
-
-                email:
-                    "BUSINESS EMAIL",
-
-                share:
-                    "SHARE PROFILE",
-
-                about:
-                    "ABOUT",
-
-                aboutTitle:
-                    "Building digital businesses.",
-
-                aboutDescription:
-                    "Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently developing multiple online stores and digital projects.",
-
-                qrModalTitle:
-                    "My Digital Card",
-
-                qrModalDescription:
-                    "Scan to open my profile"
-
-            },
-
-
-            ua: {
-
-                role:
-                    "ЗАСНОВНИК<br>E-COMMERCE КОМПАНІЇ",
-
-                contacts:
-                    "ДОДАТИ В КОНТАКТИ",
-
-                qr:
-                    "QR КОД",
-
-                telegram:
-                    "ТЕЛЕГРАМ",
-
-                instagram:
-                    "ІНСТАГРАМ",
-
-                email:
-                    "РОБОЧА ПОШТА",
-
-                share:
-                    "ПОДІЛИТИСЯ ПРОФІЛЕМ",
-
-                about:
-                    "ПРО МЕНЕ",
-
-                aboutTitle:
-                    "Створюю цифрові бізнеси.",
-
-                aboutDescription:
-                    "Підприємець та засновник, який розвивається у сфері e-commerce та створенні цифрових бізнесів. Зараз працюю над розвитком онлайн-магазинів і власних цифрових проєктів.",
-
-                qrModalTitle:
-                    "Моя цифрова візитка",
-
-                qrModalDescription:
-                    "Відскануйте QR-код, щоб відкрити профіль"
-
-            }
-
-        };
-
-
-        /* =========================
-           LANGUAGE
-        ========================= */
-
-        function setLanguage(language) {
-
-
-            document.documentElement.lang =
-                language;
-
-
-            document.getElementById("role").innerHTML =
-                translations[language].role;
-
-
-            document.getElementById("contactsText").innerText =
-                translations[language].contacts;
-
-
-            document.getElementById("qrText").innerText =
-                translations[language].qr;
-
-
-            document.getElementById("telegramText").innerText =
-                translations[language].telegram;
-
-
-            document.getElementById("instagramText").innerText =
-                translations[language].instagram;
-
-
-            document.getElementById("emailLabel").innerText =
-                translations[language].email;
-
-
-            document.getElementById("shareText").innerText =
-                translations[language].share;
-
-
-            document.getElementById("aboutLabel").innerText =
-                translations[language].about;
-
-
-            document.getElementById("aboutTitle").innerText =
-                translations[language].aboutTitle;
-
-
-            document.getElementById("aboutDescription").innerText =
-                translations[language].aboutDescription;
-
-
-            document.getElementById("qrModalTitle").innerText =
-                translations[language].qrModalTitle;
-
-
-            document.getElementById("qrModalDescription").innerText =
-                translations[language].qrModalDescription;
-
-
-            document.getElementById("enBtn")
-                .classList.remove("active");
-
-
-            document.getElementById("uaBtn")
-                .classList.remove("active");
-
-
-            if (language === "en") {
-
-                document.getElementById("enBtn")
-                    .classList.add("active");
-
-            } else {
-
-                document.getElementById("uaBtn")
-                    .classList.add("active");
-
-            }
-
-        }
-
-
-        /* =========================
-           QR
-        ========================= */
-
-        function openQR() {
-
-            document.getElementById("qrModal")
-                .style.display = "flex";
-
-        }
-
-
-        function closeQR() {
-
-            document.getElementById("qrModal")
-                .style.display = "none";
-
-        }
-
-
-        /* CLOSE QR OUTSIDE */
-
-        document
-            .getElementById("qrModal")
-            .addEventListener(
-                "click",
-                function (event) {
-
-                    if (event.target === this) {
-
-                        closeQR();
-
-                    }
-
-                }
-            );
-
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        function downloadContact() {
-
-
-            const vCard = `BEGIN:VCARD
-VERSION:3.0
-FN:Pavlo Soroka
-N:Soroka;Pavlo;;;
-TEL;TYPE=CELL:+380953243201
-EMAIL:pavlosoroka57@gmail.com
-TITLE:Founder
-ORG:E-Commerce Company
-URL:${window.location.href}
-END:VCARD`;
-
-
-            const blob = new Blob(
-                [vCard],
-                {
-                    type: "text/vcard"
-                }
-            );
-
-
-            const url =
-                URL.createObjectURL(blob);
-
-
-            const link =
-                document.createElement("a");
-
-
-            link.href = url;
-
-
-            link.download =
-                "Pavlo-Soroka.vcf";
-
-
-            document.body.appendChild(link);
-
-
-            link.click();
-
-
-            document.body.removeChild(link);
-
-
-            URL.revokeObjectURL(url);
-
-        }
-
-
-        /* =========================
-           SHARE PROFILE
-        ========================= */
-
-        async function shareProfile() {
-
-
-            const shareData = {
-
-                title:
-                    "Pavlo Soroka | Founder",
-
-                text:
-                    "Pavlo Soroka — Founder of an E-Commerce Company",
-
-                url:
-                    window.location.href
-
-            };
-
-
-            if (navigator.share) {
-
-
-                try {
-
-                    await navigator.share(
-                        shareData
-                    );
-
-                } catch (error) {
-
-                    console.log(
-                        "Share cancelled"
-                    );
-
-                }
-
-
-            } else {
-
-
-                try {
-
-                    await navigator.clipboard.writeText(
-                        window.location.href
-                    );
-
-
-                    alert(
-                        "Profile link copied!"
-                    );
-
-                } catch (error) {
-
-                    alert(
-                        "Copy this link: " +
-                        window.location.href
-                    );
-
-                }
-
-            }
-
-        }
-
-
-    </script>
-
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        role: "FOUNDER<br>E-COMMERCE COMPANY", introRole: "FOUNDER<br>E-COMMERCE COMPANY", contacts: "ADD TO CONTACTS", qr: "QR CODE", telegram: "TELEGRAM", instagram: "INSTAGRAM", email: "BUSINESS EMAIL", share: "SHARE PROFILE", about: "ABOUT", aboutTitle: "Building digital businesses.", aboutDescription: "Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently developing multiple online stores and digital projects.", projectsEyebrow: "SELECTED WORK", projectsTitle: "My Projects", projectsNote: "IDEAS INTO REAL BUSINESSES", sobolyatkoKicker: "E-COMMERCE · HOME & LIGHTING", sobolyatkoDescription: "An e-commerce store for decorative lighting, built from launch to real customer orders.", sobolyatkoOrders: "Orders", sobolyatkoProfit: "Net profit", sobolyatkoLink: "VISIT STORE", mysticKicker: "E-COMMERCE · SEASONAL PRODUCTS", mysticDescription: "A new e-commerce brand built around magical seasonal products, with a focus on brand development and growth.", mysticStatus: "Recently launched", mysticStageLabel: "Current stage", mysticFocus: "Brand & Growth", mysticFocusLabel: "Current focus", mysticLink: "EXPLORE STORE", qrModalTitle: "My Digital Card", qrModalDescription: "Scan to open my profile", skipIntro: "SKIP INTRO ↗"
+      },
+      ua: {
+        role: "ЗАСНОВНИК<br>E-COMMERCE КОМПАНІЇ", introRole: "ЗАСНОВНИК<br>E-COMMERCE КОМПАНІЇ", contacts: "ДОДАТИ В КОНТАКТИ", qr: "QR-КОД", telegram: "ТЕЛЕГРАМ", instagram: "ІНСТАГРАМ", email: "РОБОЧА ПОШТА", share: "ПОДІЛИТИСЯ ПРОФІЛЕМ", about: "ПРО МЕНЕ", aboutTitle: "Створюю цифрові бізнеси.", aboutDescription: "Підприємець та засновник, який розвиває e-commerce-бізнеси й цифрові проєкти. Зараз працюю над розвитком онлайн-магазинів і власних брендів.", projectsEyebrow: "ВИБРАНІ ПРОЄКТИ", projectsTitle: "Мої проєкти", projectsNote: "ВІД ІДЕЇ ДО СПРАВЖНЬОГО БІЗНЕСУ", sobolyatkoKicker: "E-COMMERCE · ДІМ І ОСВІТЛЕННЯ", sobolyatkoDescription: "Інтернет-магазин декоративного освітлення, який пройшов шлях від запуску до реальних замовлень.", sobolyatkoOrders: "Замовлень", sobolyatkoProfit: "Чистий прибуток", sobolyatkoLink: "ВІДВІДАТИ МАГАЗИН", mysticKicker: "E-COMMERCE · СЕЗОННІ ТОВАРИ", mysticDescription: "Новий e-commerce-бренд магічних сезонних товарів, зосереджений на розвитку бренду та зростанні.", mysticStatus: "Нещодавно запущено", mysticStageLabel: "Поточний етап", mysticFocus: "Бренд і розвиток", mysticFocusLabel: "Поточний фокус", mysticLink: "ПЕРЕГЛЯНУТИ МАГАЗИН", qrModalTitle: "Моя цифрова візитка", qrModalDescription: "Відскануйте QR-код, щоб відкрити профіль", skipIntro: "ПРОПУСТИТИ ↗"
+      }
+    };
+    const elementMap = { role: "role", introRole: "introRole", contacts: "contactsText", qr: "qrText", telegram: "telegramText", instagram: "instagramText", email: "emailLabel", share: "shareText", about: "aboutLabel", aboutTitle: "aboutTitle", aboutDescription: "aboutDescription", projectsEyebrow: "projectsEyebrow", projectsTitle: "projectsTitle", projectsNote: "projectsNote", sobolyatkoKicker: "sobolyatkoKicker", sobolyatkoDescription: "sobolyatkoDescription", sobolyatkoOrders: "sobolyatkoOrders", sobolyatkoProfit: "sobolyatkoProfit", sobolyatkoLink: "sobolyatkoLink", mysticKicker: "mysticKicker", mysticDescription: "mysticDescription", mysticStatus: "mysticStatus", mysticStageLabel: "mysticStageLabel", mysticFocus: "mysticFocus", mysticFocusLabel: "mysticFocusLabel", mysticLink: "mysticLink", qrModalTitle: "qrModalTitle", qrModalDescription: "qrModalDescription", skipIntro: "skipIntro" };
+    function setLanguage(language) {
+      const t = translations[language] || translations.en; document.documentElement.lang = language === "ua" ? "uk" : "en";
+      Object.entries(elementMap).forEach(([key, id]) => { const el = document.getElementById(id); if (el) { if (key === "role" || key === "introRole") el.innerHTML = t[key]; else el.textContent = t[key]; } });
+      document.getElementById("enBtn").classList.toggle("active", language === "en"); document.getElementById("uaBtn").classList.toggle("active", language === "ua");
+      try { localStorage.setItem("pavlo-card-language", language) } catch (_) { }
+    }
+    function openQR() { document.getElementById("qrModal").classList.add("open"); document.body.classList.add("modal-open") }
+    function closeQR() { document.getElementById("qrModal").classList.remove("open"); document.body.classList.remove("modal-open") }
+    document.getElementById("qrModal").addEventListener("click", function (e) { if (e.target === this) closeQR() });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeQR() });
+    function downloadContact() {
+      const vCard = ["BEGIN:VCARD", "VERSION:3.0", "FN:Pavlo Soroka", "N:Soroka;Pavlo;;;", "TEL;TYPE=CELL:+380953243201", "EMAIL:pavlosoroka57@gmail.com", "TITLE:Founder", "ORG:E-Commerce Company", "URL:" + window.location.href, "END:VCARD"].join("\r\n");
+      const blob = new Blob([vCard], { type: "text/vcard;charset=utf-8" }), url = URL.createObjectURL(blob), link = document.createElement("a");
+      link.href = url; link.download = "Pavlo-Soroka.vcf"; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+    async function shareProfile() {
+      const data = { title: "Pavlo Soroka | Founder", text: "Pavlo Soroka — Founder of an E-Commerce Company", url: window.location.href };
+      if (navigator.share) { try { await navigator.share(data) } catch (error) { if (error && error.name !== "AbortError") console.error(error) } }
+      else { try { await navigator.clipboard.writeText(window.location.href); alert(document.documentElement.lang === "uk" ? "Посилання на профіль скопійовано!" : "Profile link copied!") } catch (_) { prompt(document.documentElement.lang === "uk" ? "Скопіюйте посилання на профіль:" : "Copy this profile link:", window.location.href) } }
+    }
+    function finishIntro() { const intro = document.getElementById("intro"); if (!intro || intro.classList.contains("is-done")) return; intro.classList.add("is-done"); try { sessionStorage.setItem("pavlo-intro-seen", "1") } catch (_) { } setTimeout(() => intro.remove(), 850) }
+    document.getElementById("skipIntro").addEventListener("click", finishIntro);
+    let seen = false; try { seen = sessionStorage.getItem("pavlo-intro-seen") === "1" } catch (_) { }
+    if (seen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.getElementById("intro").remove(); else setTimeout(finishIntro, 2300);
+    if ("IntersectionObserver" in window) { const observer = new IntersectionObserver((entries, obs) => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); obs.unobserve(entry.target) } }), { threshold: .12 }); document.querySelectorAll(".reveal").forEach(el => observer.observe(el)) }
+    else document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+    try { const lang = localStorage.getItem("pavlo-card-language"); if (lang === "ua" || lang === "en") setLanguage(lang) } catch (_) { }
+  </script>
 </body>
 
 </html>
