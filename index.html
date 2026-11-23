@@ -3,6 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="referrer" content="no-referrer">
+  <!-- Refresh the CSP hashes after editing the inline script or style. -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'none'; base-uri 'none'; form-action 'none'; script-src 'sha256-0C7UzP6Eqh1WZ9e7x1ATtDrW5on4MZZXslzRnd0vhDU='; style-src 'sha256-jNkefYM9DhOcCf4YsRv8S60zkAUhDDnaoTnSw9Qt2rY=' https://fonts.googleapis.com; img-src 'self'; font-src https://fonts.gstatic.com; connect-src https://fonts.googleapis.com https://fonts.gstatic.com; object-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090909">
   <meta name="description" content="Pavlo Soroka — Founder building e-commerce businesses and digital projects.">
@@ -1014,13 +1018,13 @@
     <header class="topbar">
       <div class="logo" aria-label="PS monogram">PS</div>
       <div class="language-switch" aria-label="Choose language">
-        <button id="enBtn" class="active" onclick="setLanguage('en')" type="button">EN</button>
-        <button id="uaBtn" onclick="setLanguage('ua')" type="button">UA</button>
+        <button id="enBtn" class="active" type="button">EN</button>
+        <button id="uaBtn" type="button">UA</button>
       </div>
     </header>
 
     <section class="profile-card">
-      <div class="profile-image"><img src="Assets/photo.jpg" alt="Pavlo Soroka" onerror="this.style.display='none'">
+      <div class="profile-image"><img id="profilePhoto" src="Assets/photo.jpg" alt="Pavlo Soroka">
       </div>
       <div class="profile-info">
         <h1>PAVLO<br>SOROKA</h1>
@@ -1029,11 +1033,11 @@
     </section>
 
     <section class="buttons-grid" aria-label="Contact actions">
-      <button class="action-button" onclick="downloadContact()" type="button">
+      <button class="action-button" id="downloadContact" type="button">
         <div class="action-icon"><img src="Assets/PhoneIcon.jpg" class="icon-img" alt=""></div>
         <div class="action-title" id="contactsText">ADD TO CONTACTS</div>
       </button>
-      <button class="action-button" onclick="openQR()" type="button">
+      <button class="action-button" id="openQR" type="button">
         <div class="action-icon"><img src="Assets/QR-codeIcon.jpg" class="icon-img" alt=""></div>
         <div class="action-title" id="qrText">QR CODE</div>
       </button>
@@ -1059,7 +1063,7 @@
       </div>
     </a>
 
-    <button class="share-button" onclick="shareProfile()" type="button"><img src="Assets/ShareIcon.jpg" class="icon-img"
+    <button class="share-button" id="shareProfile" type="button"><img src="Assets/ShareIcon.jpg" class="icon-img"
         alt=""><span id="shareText">SHARE PROFILE</span></button>
 
     <section class="about reveal">
@@ -1126,7 +1130,7 @@
   </main>
 
   <div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
-    <div class="modal-content"><button class="close" onclick="closeQR()" aria-label="Close QR code"
+    <div class="modal-content"><button class="close" id="closeQR" aria-label="Close QR code"
         type="button">×</button>
       <h3 id="qrModalTitle">My Digital Card</h3>
       <p id="qrModalDescription">Scan to open my profile</p><img src="Assets/QR-code.jpg" class="qr-image"
@@ -1135,15 +1139,25 @@
   </div>
 
   <script>
+    const canonicalUrl = "https://pavlosorokaofficial.github.io/pavlo-card/";
     const translations = {
-      en: { role: "FOUNDER<br>E-COMMERCE COMPANY", introRole: "FOUNDER &nbsp;/&nbsp; E-COMMERCE COMPANY", contacts: "ADD TO CONTACTS", qr: "QR CODE", telegram: "TELEGRAM", instagram: "INSTAGRAM", email: "BUSINESS EMAIL", share: "SHARE PROFILE", about: "ABOUT", aboutTitle: "Building digital businesses.", aboutDescription: "Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently developing multiple online stores and digital projects.", projectsEyebrow: "SELECTED WORK", projectsTitle: "My Projects", projectsNote: "IDEAS INTO REAL BUSINESSES", sobolyatkoKicker: "E-COMMERCE · HOME & LIGHTING", sobolyatkoDescription: "An e-commerce store for decorative lighting, built from launch to real customer orders.", sobolyatkoOrders: "Orders", sobolyatkoProfit: "Net profit", sobolyatkoLink: "VISIT STORE", mysticKicker: "E-COMMERCE · SEASONAL PRODUCTS", mysticDescription: "A new e-commerce brand built around magical seasonal products, with a focus on brand development and growth.", mysticStatus: "Recently launched", mysticStageLabel: "Current stage", mysticFocus: "Brand & Growth", mysticFocusLabel: "Current focus", mysticLink: "EXPLORE STORE", qrModalTitle: "My Digital Card", qrModalDescription: "Scan to open my profile", skipIntro: "SKIP INTRO ↗" },
-      ua: { role: "ЗАСНОВНИК<br>E-COMMERCE КОМПАНІЇ", introRole: "ЗАСНОВНИК &nbsp;/&nbsp; E-COMMERCE КОМПАНІЇ", contacts: "ДОДАТИ В КОНТАКТИ", qr: "QR-КОД", telegram: "ТЕЛЕГРАМ", instagram: "ІНСТАГРАМ", email: "РОБОЧА ПОШТА", share: "ПОДІЛИТИСЯ ПРОФІЛЕМ", about: "ПРО МЕНЕ", aboutTitle: "Створюю цифрові бізнеси.", aboutDescription: "Підприємець та засновник, який розвиває e-commerce-бізнеси й цифрові проєкти. Зараз працюю над розвитком онлайн-магазинів і власних брендів.", projectsEyebrow: "ВИБРАНІ ПРОЄКТИ", projectsTitle: "Мої проєкти", projectsNote: "ВІД ІДЕЇ ДО СПРАВЖНЬОГО БІЗНЕСУ", sobolyatkoKicker: "E-COMMERCE · ДІМ І ОСВІТЛЕННЯ", sobolyatkoDescription: "Інтернет-магазин декоративного освітлення, який пройшов шлях від запуску до реальних замовлень.", sobolyatkoOrders: "Замовлень", sobolyatkoProfit: "Чистий прибуток", sobolyatkoLink: "ВІДВІДАТИ МАГАЗИН", mysticKicker: "E-COMMERCE · СЕЗОННІ ТОВАРИ", mysticDescription: "Новий e-commerce-бренд магічних сезонних товарів, зосереджений на розвитку бренду та зростанні.", mysticStatus: "Нещодавно запущено", mysticStageLabel: "Поточний етап", mysticFocus: "Бренд і розвиток", mysticFocusLabel: "Поточний фокус", mysticLink: "ПЕРЕГЛЯНУТИ МАГАЗИН", qrModalTitle: "Моя цифрова візитка", qrModalDescription: "Відскануйте QR-код, щоб відкрити профіль", skipIntro: "ПРОПУСТИТИ ↗" }
+      en: { role: ["FOUNDER", "E-COMMERCE COMPANY"], introRole: "FOUNDER \u00a0/\u00a0 E-COMMERCE COMPANY", contacts: "ADD TO CONTACTS", qr: "QR CODE", telegram: "TELEGRAM", instagram: "INSTAGRAM", email: "BUSINESS EMAIL", share: "SHARE PROFILE", about: "ABOUT", aboutTitle: "Building digital businesses.", aboutDescription: "Entrepreneur and founder focused on building and scaling e-commerce businesses. Currently developing multiple online stores and digital projects.", projectsEyebrow: "SELECTED WORK", projectsTitle: "My Projects", projectsNote: "IDEAS INTO REAL BUSINESSES", sobolyatkoKicker: "E-COMMERCE · HOME & LIGHTING", sobolyatkoDescription: "An e-commerce store for decorative lighting, built from launch to real customer orders.", sobolyatkoOrders: "Orders", sobolyatkoProfit: "Net profit", sobolyatkoLink: "VISIT STORE", mysticKicker: "E-COMMERCE · SEASONAL PRODUCTS", mysticDescription: "A new e-commerce brand built around magical seasonal products, with a focus on brand development and growth.", mysticStatus: "Recently launched", mysticStageLabel: "Current stage", mysticFocus: "Brand & Growth", mysticFocusLabel: "Current focus", mysticLink: "EXPLORE STORE", qrModalTitle: "My Digital Card", qrModalDescription: "Scan to open my profile", skipIntro: "SKIP INTRO ↗" },
+      ua: { role: ["ЗАСНОВНИК", "E-COMMERCE КОМПАНІЇ"], introRole: "ЗАСНОВНИК \u00a0/\u00a0 E-COMMERCE КОМПАНІЇ", contacts: "ДОДАТИ В КОНТАКТИ", qr: "QR-КОД", telegram: "ТЕЛЕГРАМ", instagram: "ІНСТАГРАМ", email: "РОБОЧА ПОШТА", share: "ПОДІЛИТИСЯ ПРОФІЛЕМ", about: "ПРО МЕНЕ", aboutTitle: "Створюю цифрові бізнеси.", aboutDescription: "Підприємець та засновник, який розвиває e-commerce-бізнеси й цифрові проєкти. Зараз працюю над розвитком онлайн-магазинів і власних брендів.", projectsEyebrow: "ВИБРАНІ ПРОЄКТИ", projectsTitle: "Мої проєкти", projectsNote: "ВІД ІДЕЇ ДО СПРАВЖНЬОГО БІЗНЕСУ", sobolyatkoKicker: "E-COMMERCE · ДІМ І ОСВІТЛЕННЯ", sobolyatkoDescription: "Інтернет-магазин декоративного освітлення, який пройшов шлях від запуску до реальних замовлень.", sobolyatkoOrders: "Замовлень", sobolyatkoProfit: "Чистий прибуток", sobolyatkoLink: "ВІДВІДАТИ МАГАЗИН", mysticKicker: "E-COMMERCE · СЕЗОННІ ТОВАРИ", mysticDescription: "Новий e-commerce-бренд магічних сезонних товарів, зосереджений на розвитку бренду та зростанні.", mysticStatus: "Нещодавно запущено", mysticStageLabel: "Поточний етап", mysticFocus: "Бренд і розвиток", mysticFocusLabel: "Поточний фокус", mysticLink: "ПЕРЕГЛЯНУТИ МАГАЗИН", qrModalTitle: "Моя цифрова візитка", qrModalDescription: "Відскануйте QR-код, щоб відкрити профіль", skipIntro: "ПРОПУСТИТИ ↗" }
     };
-    const elementMap = { role: "role", introRole: "introRole", contacts: "contactsText", qr: "qrText", telegram: "telegramText", instagram: "instagramText", email: "emailLabel", share: "shareText", about: "aboutLabel", aboutTitle: "aboutTitle", aboutDescription: "aboutDescription", projectsEyebrow: "projectsEyebrow", projectsTitle: "projectsTitle", projectsNote: "projectsNote", sobolyatkoKicker: "sobolyatkoKicker", sobolyatkoDescription: "sobolyatkoDescription", sobolyatkoOrders: "sobolyatkoOrders", sobolyatkoProfit: "sobolyatkoProfit", sobolyatkoLink: "sobolyatkoLink", mysticKicker: "mysticKicker", mysticDescription: "mysticDescription", mysticStatus: "mysticStatus", mysticStageLabel: "mysticStageLabel", mysticFocus: "mysticFocus", mysticFocusLabel: "mysticFocusLabel", mysticLink: "mysticLink", qrModalTitle: "qrModalTitle", qrModalDescription: "qrModalDescription", skipIntro: "skipIntro" };
+    const elementMap = { introRole: "introRole", contacts: "contactsText", qr: "qrText", telegram: "telegramText", instagram: "instagramText", email: "emailLabel", share: "shareText", about: "aboutLabel", aboutTitle: "aboutTitle", aboutDescription: "aboutDescription", projectsEyebrow: "projectsEyebrow", projectsTitle: "projectsTitle", projectsNote: "projectsNote", sobolyatkoKicker: "sobolyatkoKicker", sobolyatkoDescription: "sobolyatkoDescription", sobolyatkoOrders: "sobolyatkoOrders", sobolyatkoProfit: "sobolyatkoProfit", sobolyatkoLink: "sobolyatkoLink", mysticKicker: "mysticKicker", mysticDescription: "mysticDescription", mysticStatus: "mysticStatus", mysticStageLabel: "mysticStageLabel", mysticFocus: "mysticFocus", mysticFocusLabel: "mysticFocusLabel", mysticLink: "mysticLink", qrModalTitle: "qrModalTitle", qrModalDescription: "qrModalDescription", skipIntro: "skipIntro" };
 
     function setLanguage(language) {
-      const t = translations[language] || translations.en; document.documentElement.lang = language === "ua" ? "uk" : "en";
-      Object.entries(elementMap).forEach(([key, id]) => { const el = document.getElementById(id); if (el) { if (key === "role" || key === "introRole") el.innerHTML = t[key]; else el.textContent = t[key]; } });
+      const t = translations[language] || translations.en;
+      document.documentElement.lang = language === "ua" ? "uk" : "en";
+      const [roleTitle, company] = t.role;
+      const role = document.getElementById("role");
+      role.textContent = roleTitle;
+      role.appendChild(document.createElement("br"));
+      role.appendChild(document.createTextNode(company));
+      Object.entries(elementMap).forEach(([key, id]) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = t[key];
+      });
       document.getElementById("enBtn").classList.toggle("active", language === "en"); document.getElementById("uaBtn").classList.toggle("active", language === "ua");
       try { localStorage.setItem("pavlo-card-language", language) } catch (_) { }
     }
@@ -1153,15 +1167,27 @@
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeQR() });
 
     function downloadContact() {
-      const vCard = ["BEGIN:VCARD", "VERSION:3.0", "FN:Pavlo Soroka", "N:Soroka;Pavlo;;;", "TEL;TYPE=CELL:+380953243201", "EMAIL:pavlosoroka57@gmail.com", "TITLE:Founder", "ORG:E-Commerce Company", "URL:" + window.location.href, "END:VCARD"].join("\r\n");
+      const vCard = ["BEGIN:VCARD", "VERSION:3.0", "FN:Pavlo Soroka", "N:Soroka;Pavlo;;;", "TEL;TYPE=CELL:+380953243201", "EMAIL:pavlosoroka57@gmail.com", "TITLE:Founder", "ORG:E-Commerce Company", "URL:" + canonicalUrl, "END:VCARD"].join("\r\n");
       const blob = new Blob([vCard], { type: "text/vcard;charset=utf-8" }), url = URL.createObjectURL(blob), link = document.createElement("a");
       link.href = url; link.download = "Pavlo-Soroka.vcf"; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
     async function shareProfile() {
-      const data = { title: "Pavlo Soroka | Founder", text: "Pavlo Soroka — Founder of an E-Commerce Company", url: window.location.href };
+      const data = { title: "Pavlo Soroka | Founder", text: "Pavlo Soroka — Founder of an E-Commerce Company", url: canonicalUrl };
       if (navigator.share) { try { await navigator.share(data) } catch (error) { if (error && error.name !== "AbortError") console.error(error) } }
-      else { try { await navigator.clipboard.writeText(window.location.href); alert(document.documentElement.lang === "uk" ? "Посилання на профіль скопійовано!" : "Profile link copied!") } catch (_) { prompt(document.documentElement.lang === "uk" ? "Скопіюйте посилання на профіль:" : "Copy this profile link:", window.location.href) } }
+      else { try { await navigator.clipboard.writeText(canonicalUrl); alert(document.documentElement.lang === "uk" ? "Посилання на профіль скопійовано!" : "Profile link copied!") } catch (_) { prompt(document.documentElement.lang === "uk" ? "Скопіюйте посилання на профіль:" : "Copy this profile link:", canonicalUrl) } }
     }
+
+    document.getElementById("enBtn").addEventListener("click", () => setLanguage("en"));
+    document.getElementById("uaBtn").addEventListener("click", () => setLanguage("ua"));
+    document.getElementById("downloadContact").addEventListener("click", downloadContact);
+    document.getElementById("openQR").addEventListener("click", openQR);
+    document.getElementById("closeQR").addEventListener("click", closeQR);
+    document.getElementById("shareProfile").addEventListener("click", shareProfile);
+
+    const profilePhoto = document.getElementById("profilePhoto");
+    function hideBrokenPhoto() { profilePhoto.style.display = "none"; }
+    profilePhoto.addEventListener("error", hideBrokenPhoto, { once: true });
+    if (profilePhoto.complete && profilePhoto.naturalWidth === 0) hideBrokenPhoto();
 
     /* ===== intro: gold particles + timing (~1.9s total) ===== */
     function startParticles() {
